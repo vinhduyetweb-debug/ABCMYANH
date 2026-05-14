@@ -1,62 +1,55 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABC Adventure V5</title>
+<title>ABC Adventure V6</title>
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-<div class="bg-clouds"></div>
+<div class="floating-bg"></div>
 
 <div class="app">
 
 <header class="topbar">
 <div>
-<h1>ABC Adventure V5</h1>
-<p>Interactive English Universe</p>
+<h1>ABC Adventure V6</h1>
+<p>Living Emotional Toy Universe</p>
 </div>
 
 <div class="hud">
 <div class="hud-box">⭐ <span id="xp">0</span></div>
-<div class="hud-box">🏆 Lv <span id="level">1</span></div>
-<div class="hud-box">🔥 <span id="streak">0</span></div>
+<div class="hud-box">🏆 <span id="level">1</span></div>
+<div class="hud-box">🔥 <span id="combo">0</span></div>
 </div>
 </header>
 
-<section class="map-card">
-<h2>🌍 Adventure Worlds</h2>
+<section class="story-card">
+<div class="mascot" id="mascot">🐰</div>
 
-<div class="worlds">
-<div class="world active">🌳 Forest</div>
-<div class="world">🌊 Ocean</div>
-<div class="world">🚀 Space</div>
-<div class="world">🏰 Castle</div>
+<div class="story-content">
+<h2 id="storyTitle">Rabbit Lost The Apple 🍎</h2>
+<p id="storyText">Can you help Rabbit find the correct item?</p>
 </div>
 </section>
 
-<section class="mascot-card">
+<section class="mystery-card">
+<div class="mystery-egg" id="mysteryEgg">🥚</div>
 
-<div class="mascot" id="mascot">🐰</div>
-
-<div class="speech" id="speech">
-Hello little hero!
-</div>
-
+<p>Tap the mystery egg after correct answers!</p>
 </section>
 
 <section class="lesson-card">
 
-<div class="phonics">Phonics Sound: <span id="phonics">Ah</span></div>
+<div class="phonics">Phonics: <span id="phonics">Ah</span></div>
 
 <div class="letter" id="letter">A</div>
 
 <div class="word" id="word">Apple 🍎</div>
 
-<button class="primary-btn" id="voiceBtn">
+<button class="voice-btn" id="voiceBtn">
 🔊 British Voice
 </button>
 
@@ -64,7 +57,7 @@ Hello little hero!
 
 <section class="quiz-card">
 
-<h2>Choose The Correct Word</h2>
+<h2>Choose The Correct Item</h2>
 
 <div class="choices" id="choices"></div>
 
@@ -72,24 +65,36 @@ Hello little hero!
 
 </section>
 
-<section class="trace-card">
+<section class="silhouette-card">
 
-<h2>✍ Trace The Letter</h2>
+<h2>🌑 Shadow Guess Game</h2>
 
-<canvas id="traceCanvas" width="320" height="220"></canvas>
+<div class="shadow-box" id="shadowBox">🐱</div>
 
-<button class="clear-btn" id="clearBtn">Clear</button>
+<div class="shadow-choices" id="shadowChoices"></div>
+
+<div class="shadow-feedback" id="shadowFeedback"></div>
+
+</section>
+
+<section class="flash-card">
+
+<h2>⚡ Flash Card Challenge</h2>
+
+<div class="flash-display" id="flashDisplay">🍎</div>
+
+<button class="flash-btn" id="flashBtn">
+Start Flash Mode
+</button>
 
 </section>
 
 <section class="pet-card">
 
-<h2>🐱 Pet Companion</h2>
+<div class="pet" id="pet">🐱</div>
 
-<div class="pet">🐱</div>
-
-<div class="pet-status" id="petStatus">
-Your pet is happy!
+<div class="pet-message" id="petMessage">
+Your pet missed you!
 </div>
 
 <button class="feed-btn" id="feedBtn">
@@ -98,28 +103,11 @@ Your pet is happy!
 
 </section>
 
-<section class="reward-card">
+<section class="collection-card">
 
-<div class="reward-header">
-<h2>🎁 Achievement Badges</h2>
-<div class="combo">Combo <span id="combo">0</span></div>
-</div>
+<h2>🎁 Sticker Collection</h2>
 
-<div class="badges" id="badges"></div>
-
-</section>
-
-<section class="daily-card">
-
-<h2>📅 Daily Mission</h2>
-
-<p id="dailyMission">
-Get 3 correct answers today!
-</p>
-
-<div class="mission-progress">
-<div class="mission-bar" id="missionBar"></div>
-</div>
+<div class="stickers" id="stickers"></div>
 
 </section>
 

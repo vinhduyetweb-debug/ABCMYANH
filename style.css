@@ -1,4 +1,3 @@
-
 *{
 margin:0;
 padding:0;
@@ -8,30 +7,33 @@ box-sizing:border-box;
 
 body{
 font-family:Trebuchet MS,sans-serif;
-background:linear-gradient(180deg,#8edcff,#fff6dc);
+background:linear-gradient(180deg,#92ddff,#fff7de);
 min-height:100vh;
-padding:16px;
 overflow-x:hidden;
+padding:16px;
 }
 
-.bg-clouds::before{
-content:"☁ ☁ ☁ ✨ ⭐";
+.floating-bg::before{
+content:"☁ ⭐ 🌈 ✨ ☁";
 position:fixed;
 top:20px;
-left:0;
-font-size:40px;
-animation:clouds 20s linear infinite;
+left:-20vw;
+font-size:38px;
 opacity:.4;
+animation:floatBg 22s linear infinite;
 }
 
-@keyframes clouds{
-from{transform:translateX(-20vw)}
-to{transform:translateX(120vw)}
+@keyframes floatBg{
+to{
+transform:translateX(140vw);
+}
 }
 
 .app{
-max-width:980px;
+max-width:960px;
 margin:auto;
+position:relative;
+z-index:2;
 }
 
 .topbar{
@@ -42,8 +44,8 @@ margin-bottom:18px;
 }
 
 .topbar h1{
-font-size:42px;
-color:#ff5e9a;
+font-size:40px;
+color:#ff5c96;
 }
 
 .hud{
@@ -59,42 +61,23 @@ font-weight:bold;
 box-shadow:0 10px 24px rgba(0,0,0,.08);
 }
 
-.map-card,
-.mascot-card,
+.story-card,
+.mystery-card,
 .lesson-card,
 .quiz-card,
-.trace-card,
+.silhouette-card,
+.flash-card,
 .pet-card,
-.reward-card,
-.daily-card{
+.collection-card{
 background:rgba(255,255,255,.92);
 padding:24px;
-border-radius:28px;
+border-radius:30px;
 margin-bottom:18px;
 box-shadow:0 14px 30px rgba(0,0,0,.08);
 backdrop-filter:blur(10px);
 }
 
-.worlds{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-margin-top:16px;
-}
-
-.world{
-padding:14px 18px;
-border-radius:18px;
-background:#eef3ff;
-font-weight:bold;
-}
-
-.active{
-background:#5b7cff;
-color:#fff;
-}
-
-.mascot-card{
+.story-card{
 display:flex;
 align-items:center;
 gap:20px;
@@ -102,15 +85,22 @@ gap:20px;
 
 .mascot{
 font-size:100px;
+cursor:pointer;
 animation:bounce 2s infinite;
 }
 
-.speech{
-background:#fff2b8;
-padding:18px;
-border-radius:20px;
-font-size:22px;
-font-weight:bold;
+.story-content h2{
+margin-bottom:10px;
+}
+
+.mystery-card{
+text-align:center;
+}
+
+.mystery-egg{
+font-size:90px;
+cursor:pointer;
+animation:wobble 2s infinite;
 }
 
 .lesson-card{
@@ -119,8 +109,8 @@ text-align:center;
 
 .phonics{
 font-size:22px;
-margin-bottom:10px;
 font-weight:bold;
+margin-bottom:10px;
 }
 
 .letter{
@@ -132,56 +122,58 @@ animation:float 2s infinite;
 
 .word{
 font-size:40px;
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
-.primary-btn,
+.voice-btn,
 .choice-btn,
-.clear-btn,
+.flash-btn,
 .feed-btn{
 border:none;
 padding:18px;
-border-radius:20px;
+border-radius:22px;
 font-size:20px;
 cursor:pointer;
 transition:.2s;
 font-weight:bold;
 }
 
-.primary-btn{
+.voice-btn{
 background:#5b7cff;
 color:#fff;
-}
-
-.clear-btn{
-background:#ff8b8b;
-color:#fff;
-margin-top:14px;
-}
-
-.feed-btn{
-background:#ffd54d;
 }
 
 .choice-btn{
 background:#eef3ff;
 }
 
+.flash-btn{
+background:#ffca3a;
+}
+
+.feed-btn{
+background:#ffb84d;
+}
+
 .choice-btn:hover,
-.primary-btn:hover,
+.voice-btn:hover,
+.flash-btn:hover,
 .feed-btn:hover,
-.clear-btn:hover{
+.mascot:hover,
+.mystery-egg:hover{
 transform:scale(1.05);
 }
 
-.choices{
+.choices,
+.shadow-choices{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:14px;
 margin-top:18px;
 }
 
-.feedback{
+.feedback,
+.shadow-feedback{
 margin-top:18px;
 font-size:28px;
 font-weight:bold;
@@ -189,11 +181,18 @@ text-align:center;
 min-height:40px;
 }
 
-#traceCanvas{
-background:#fff;
-border-radius:20px;
-border:4px dashed #d9e4ff;
-touch-action:none;
+.shadow-box{
+font-size:100px;
+filter:brightness(0);
+text-align:center;
+margin-top:12px;
+}
+
+.flash-display{
+font-size:100px;
+text-align:center;
+margin:20px 0;
+animation:pulse 1.5s infinite;
 }
 
 .pet-card{
@@ -201,61 +200,33 @@ text-align:center;
 }
 
 .pet{
-font-size:90px;
+font-size:100px;
 animation:float 3s infinite;
+cursor:pointer;
 }
 
-.pet-status{
+.pet-message{
 font-size:24px;
+font-weight:bold;
 margin:14px 0;
-font-weight:bold;
 }
 
-.reward-header{
+.stickers{
 display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:16px;
-}
-
-.combo{
-background:#fff0b3;
-padding:10px 14px;
-border-radius:16px;
-font-weight:bold;
-}
-
-.badges{
-display:flex;
-gap:12px;
 flex-wrap:wrap;
+gap:12px;
 }
 
-.badge{
-width:90px;
-height:90px;
+.sticker{
+width:84px;
+height:84px;
 border-radius:24px;
-background:#fff0a3;
+background:#fff1a8;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:42px;
 animation:pop .4s;
-}
-
-.mission-progress{
-height:18px;
-background:#eef2ff;
-border-radius:999px;
-overflow:hidden;
-margin-top:16px;
-}
-
-.mission-bar{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#5b7cff,#6ee7b7);
-transition:.4s;
 }
 
 .fx{
@@ -269,9 +240,20 @@ animation:fall 1.2s linear forwards;
 50%{transform:translateY(-12px)}
 }
 
+@keyframes wobble{
+0%,100%{transform:rotate(0)}
+25%{transform:rotate(5deg)}
+75%{transform:rotate(-5deg)}
+}
+
 @keyframes float{
 0%,100%{transform:translateY(0)}
 50%{transform:translateY(-8px)}
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.08)}
 }
 
 @keyframes pop{
@@ -294,11 +276,7 @@ align-items:flex-start;
 gap:12px;
 }
 
-.hud{
-flex-wrap:wrap;
-}
-
-.mascot-card{
+.story-card{
 flex-direction:column;
 text-align:center;
 }
@@ -311,13 +289,8 @@ font-size:100px;
 font-size:30px;
 }
 
-.choices{
+.choices,
+.shadow-choices{
 grid-template-columns:1fr;
-}
-
-.reward-header{
-flex-direction:column;
-align-items:flex-start;
-gap:12px;
 }
 }
