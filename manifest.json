@@ -1,0 +1,8 @@
+{
+  "name": "ABC Adventure",
+  "short_name": "ABC Adventure",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4b73ff",
+  "start_url": "./"
+}

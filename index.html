@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABC Adventure</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+<header class="topbar">
+<div>
+<h1>ABC Adventure</h1>
+<p>English Adventure Game</p>
+</div>
+
+<div class="streak-box">🔥 <span id="streak">1</span></div>
+</header>
+
+<section class="hero-card">
+<div>
+<h2>Learn English With Fun</h2>
+<p>Tap and play with English letters.</p>
+</div>
+
+<div class="star-box">⭐ <span id="stars">0</span></div>
+</section>
+
+<section class="lesson-card">
+<div class="letter-display" id="letterDisplay">A</div>
+<div class="word-display" id="wordDisplay">Apple 🍎</div>
+
+<button class="speak-btn" id="speakBtn">🔊 Listen</button>
+</section>
+
+<section class="controls">
+<button id="prevBtn">⬅ Previous</button>
+<button id="nextBtn">Next ➜</button>
+</section>
+
+<section class="game-card">
+<h2>Matching Game</h2>
+<div class="choices" id="choices"></div>
+<div class="feedback" id="feedback"></div>
+</section>
+
+<section class="reward-card">
+<h2>Sticker Collection</h2>
+<div class="stickers" id="stickers"></div>
+</section>
+
+</div>
+
+<div class="confetti" id="confetti"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
