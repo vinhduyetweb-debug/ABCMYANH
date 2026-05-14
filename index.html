@@ -1,61 +1,69 @@
-
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABC Adventure</title>
-<link rel="manifest" href="manifest.json">
+<title>ABC Adventure V2</title>
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
 </head>
 <body>
+
+<div class="floating-stars"></div>
 
 <div class="app">
 
 <header class="topbar">
 <div>
 <h1>ABC Adventure</h1>
-<p>English Adventure Game</p>
+<p>Learn English Through Play</p>
 </div>
 
-<div class="streak-box">🔥 <span id="streak">1</span></div>
+<div class="xp-box">
+⭐ <span id="xp">0</span>
+</div>
 </header>
 
-<section class="hero-card">
-<div>
-<h2>Learn English With Fun</h2>
-<p>Tap and play with English letters.</p>
-</div>
+<section class="hero">
+<div class="mascot">🐰</div>
 
-<div class="star-box">⭐ <span id="stars">0</span></div>
+<div>
+<h2>Welcome Little Hero!</h2>
+<p>Tap the right answer and collect magic stickers.</p>
+</div>
 </section>
 
 <section class="lesson-card">
-<div class="letter-display" id="letterDisplay">A</div>
-<div class="word-display" id="wordDisplay">Apple 🍎</div>
+<div class="level-box">
+LEVEL <span id="level">1</span>
+</div>
 
-<button class="speak-btn" id="speakBtn">🔊 Listen</button>
-</section>
+<div class="letter" id="letter">A</div>
+<div class="word" id="word">Apple 🍎</div>
 
-<section class="controls">
-<button id="prevBtn">⬅ Previous</button>
-<button id="nextBtn">Next ➜</button>
+<button id="speakBtn" class="primary-btn">
+🔊 British Voice
+</button>
 </section>
 
 <section class="game-card">
-<h2>Matching Game</h2>
+<h2>Choose The Correct Word</h2>
+
 <div class="choices" id="choices"></div>
-<div class="feedback" id="feedback"></div>
+
+<div id="feedback" class="feedback"></div>
 </section>
 
 <section class="reward-card">
 <h2>Sticker Collection</h2>
+
 <div class="stickers" id="stickers"></div>
 </section>
 
 </div>
 
-<div class="confetti" id="confetti"></div>
+<div id="fireworks"></div>
+<div id="bubbleArea"></div>
 
 <script src="app.js"></script>
 </body>

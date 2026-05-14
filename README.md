@@ -1,10 +1,9 @@
+# ABC Adventure V2
 
-# ABC Adventure
+Enhanced English learning game for kids.
 
-Mini app học tiếng Anh cho trẻ em.
+## Run Local
+Open index.html
 
-## Chạy local
-Mở file index.html
-
-## Deploy Vercel
-Upload source code lên Vercel và deploy.
+## Deploy
+Upload to Vercel or Netlify.
