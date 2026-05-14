@@ -1,8 +1,8 @@
 {
-  "name": "ABC Adventure V3",
-  "short_name": "ABC V3",
+  "name": "ABC Adventure V5",
+  "short_name": "ABC V5",
   "display": "standalone",
-  "background_color": "#fff6da",
+  "background_color": "#fff6dc",
   "theme_color": "#5b7cff",
   "start_url": "./"
 }

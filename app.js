@@ -1,49 +1,46 @@
 
 const lessons = [
-{letter:'A',word:'Apple 🍎',emoji:'🍎'},
-{letter:'B',word:'Ball ⚽',emoji:'⚽'},
-{letter:'C',word:'Cat 🐱',emoji:'🐱'},
-{letter:'D',word:'Dog 🐶',emoji:'🐶'},
-{letter:'E',word:'Egg 🥚',emoji:'🥚'},
-{letter:'F',word:'Fish 🐟',emoji:'🐟'},
-{letter:'G',word:'Grape 🍇',emoji:'🍇'}
+{letter:'A',word:'Apple 🍎',emoji:'🍎',phonics:'Ah'},
+{letter:'B',word:'Ball ⚽',emoji:'⚽',phonics:'Buh'},
+{letter:'C',word:'Cat 🐱',emoji:'🐱',phonics:'Cuh'},
+{letter:'D',word:'Dog 🐶',emoji:'🐶',phonics:'Duh'},
+{letter:'E',word:'Egg 🥚',emoji:'🥚',phonics:'Eh'}
 ];
 
 let current = 0;
-let xp = Number(localStorage.getItem('v3_xp')) || 0;
-let level = Number(localStorage.getItem('v3_level')) || 1;
-let combo = Number(localStorage.getItem('v3_combo')) || 0;
-let correctCount = Number(localStorage.getItem('v3_correct')) || 0;
-let stickers = JSON.parse(localStorage.getItem('v3_stickers')) || [];
+let xp = Number(localStorage.getItem('v5_xp')) || 0;
+let level = Number(localStorage.getItem('v5_level')) || 1;
+let streak = Number(localStorage.getItem('v5_streak')) || 0;
+let combo = Number(localStorage.getItem('v5_combo')) || 0;
+let badges = JSON.parse(localStorage.getItem('v5_badges')) || [];
 
-const letterEl = document.getElementById('letter');
-const wordEl = document.getElementById('word');
 const choicesEl = document.getElementById('choices');
 const feedbackEl = document.getElementById('feedback');
-const mascotEl = document.getElementById('mascot');
-const speechBubble = document.getElementById('speechBubble');
 
 function render(){
 
 const lesson = lessons[current];
 
-letterEl.innerText = lesson.letter;
-wordEl.innerText = lesson.word;
+document.getElementById('letter').innerText = lesson.letter;
+document.getElementById('word').innerText = lesson.word;
+document.getElementById('phonics').innerText = lesson.phonics;
 
 document.getElementById('xp').innerText = xp;
 document.getElementById('level').innerText = level;
+document.getElementById('streak').innerText = streak;
 document.getElementById('combo').innerText = combo;
 
-const progress = (correctCount % 5) * 20;
-document.getElementById('progressBar').style.width = progress + '%';
-
 renderChoices();
-renderStickers();
+renderBadges();
+
+const progress = Math.min((combo / 3) * 100, 100);
+document.getElementById('missionBar').style.width = progress + '%';
+
 }
 
 function renderChoices(){
 
-choicesEl.innerHTML='';
+choicesEl.innerHTML = '';
 
 const lesson = lessons[current];
 
@@ -52,7 +49,7 @@ let options = [...lessons]
 .slice(0,3);
 
 if(!options.find(o=>o.word===lesson.word)){
-options[0]=lesson;
+options[0] = lesson;
 }
 
 options.sort(()=>0.5-Math.random());
@@ -61,182 +58,90 @@ options.forEach(option=>{
 
 const btn = document.createElement('button');
 
-btn.className='choice-btn';
-btn.innerText=option.word;
+btn.className = 'choice-btn';
+btn.innerText = option.word;
 
-btn.onclick=()=>checkAnswer(option.word===lesson.word, lesson);
+btn.onclick = ()=>checkAnswer(option.word===lesson.word, lesson);
 
 choicesEl.appendChild(btn);
 
 });
 }
 
-function speakBritish(){
-
-const utterance = new SpeechSynthesisUtterance(lessons[current].word);
-
-const voices = speechSynthesis.getVoices();
-
-const british = voices.find(v =>
-v.lang === 'en-GB'
-);
-
-if(british){
-utterance.voice = british;
-}
-
-utterance.lang='en-GB';
-utterance.rate=.9;
-utterance.pitch=1;
-
-speechSynthesis.speak(utterance);
-
-}
-
 function checkAnswer(correct, lesson){
+
+const mascot = document.getElementById('mascot');
+const speech = document.getElementById('speech');
 
 if(correct){
 
-feedbackEl.innerHTML='🎉 Amazing!';
+feedbackEl.innerHTML = '🎉 Amazing!';
 
-mascotEl.innerText='🥳';
-speechBubble.innerText='Wonderful little hero!';
+mascot.innerText = '🥳';
+speech.innerText = 'Wonderful little hero!';
 
 xp += 10;
 combo += 1;
-correctCount += 1;
-
-if(correctCount % 5 === 0){
-showTreasure();
-}
+streak += 1;
 
 if(xp % 50 === 0){
 level += 1;
 }
 
-if(!stickers.includes(lesson.emoji)){
-stickers.push(lesson.emoji);
+if(!badges.includes(lesson.emoji)){
+badges.push(lesson.emoji);
 }
 
-playHappySound();
-fireworks();
+playSound(700);
+celebrate();
 
 }else{
 
-feedbackEl.innerHTML='💥 Oops! Try Again';
+feedbackEl.innerHTML = '💥 Oops!';
 
-mascotEl.innerText='😵';
-speechBubble.innerText='Oops~ Let’s try again!';
+mascot.innerText = '😵';
+speech.innerText = 'Try again little hero!';
 
 combo = 0;
 
-playWrongSound();
+playSound(180);
 bubbleBoom();
 
 }
 
-saveState();
-renderStickers();
+saveData();
 
 setTimeout(()=>{
+
+mascot.innerText='🐰';
+speech.innerText='Keep learning and have fun!';
 
 current = (current + 1) % lessons.length;
 
-mascotEl.innerText='🐰';
-speechBubble.innerText='You are doing great!';
-
 render();
 
-},1800);
-}
-
-function renderStickers(){
-
-const container = document.getElementById('stickers');
-
-container.innerHTML='';
-
-stickers.forEach(sticker=>{
-
-const div = document.createElement('div');
-
-div.className='sticker';
-div.innerText=sticker;
-
-container.appendChild(div);
-
-});
-}
-
-function saveState(){
-
-localStorage.setItem('v3_xp', xp);
-localStorage.setItem('v3_level', level);
-localStorage.setItem('v3_combo', combo);
-localStorage.setItem('v3_correct', correctCount);
-localStorage.setItem('v3_stickers', JSON.stringify(stickers));
+},1500);
 
 }
 
-function playHappySound(){
-
-const ctx = new AudioContext();
-
-const osc = ctx.createOscillator();
-const gain = ctx.createGain();
-
-osc.connect(gain);
-gain.connect(ctx.destination);
-
-osc.frequency.value = 700;
-gain.gain.value = 0.08;
-
-osc.start();
-
-setTimeout(()=>{
-osc.stop();
-},200);
-}
-
-function playWrongSound(){
-
-const ctx = new AudioContext();
-
-const osc = ctx.createOscillator();
-const gain = ctx.createGain();
-
-osc.connect(gain);
-gain.connect(ctx.destination);
-
-osc.frequency.value = 180;
-gain.gain.value = 0.08;
-
-osc.start();
-
-setTimeout(()=>{
-osc.stop();
-},300);
-}
-
-function fireworks(){
+function celebrate(){
 
 const icons = ['⭐','✨','🎉','🌈','💖'];
 
-for(let i=0;i<50;i++){
+for(let i=0;i<40;i++){
 
 const fx = document.createElement('div');
 
 fx.className='fx';
 fx.innerText = icons[Math.floor(Math.random()*icons.length)];
 
-fx.style.left=Math.random()*window.innerWidth+'px';
-fx.style.top='-20px';
-fx.style.fontSize=(18+Math.random()*24)+'px';
+fx.style.left = Math.random()*window.innerWidth+'px';
+fx.style.top = '-20px';
+fx.style.fontSize = (20 + Math.random()*24)+'px';
 
 document.body.appendChild(fx);
 
-setTimeout(()=>fx.remove(),1500);
-
+setTimeout(()=>fx.remove(),1200);
 }
 }
 
@@ -244,40 +149,142 @@ function bubbleBoom(){
 
 for(let i=0;i<12;i++){
 
-const bubble = document.createElement('div');
+const div = document.createElement('div');
 
-bubble.className='bubble';
+div.className='fx';
+div.innerText='🫧';
 
-bubble.style.left=Math.random()*window.innerWidth+'px';
-bubble.style.top=Math.random()*window.innerHeight+'px';
+div.style.left=Math.random()*window.innerWidth+'px';
+div.style.top=Math.random()*window.innerHeight+'px';
+div.style.fontSize='30px';
 
-document.body.appendChild(bubble);
+document.body.appendChild(div);
 
-setTimeout(()=>bubble.remove(),1000);
+setTimeout(()=>div.remove(),1000);
 
 }
 }
 
-function showTreasure(){
+function playSound(freq){
 
-document.getElementById('chestCard').scrollIntoView({
-behavior:'smooth'
+const ctx = new AudioContext();
+const osc = ctx.createOscillator();
+const gain = ctx.createGain();
+
+osc.connect(gain);
+gain.connect(ctx.destination);
+
+osc.frequency.value = freq;
+gain.gain.value = 0.08;
+
+osc.start();
+
+setTimeout(()=>osc.stop(),200);
+}
+
+function renderBadges(){
+
+const container = document.getElementById('badges');
+
+container.innerHTML='';
+
+badges.forEach(b=>{
+
+const div = document.createElement('div');
+
+div.className='badge';
+div.innerText=b;
+
+container.appendChild(div);
+
 });
+}
 
-speechBubble.innerText='Treasure unlocked!';
+function saveData(){
 
-fireworks();
+localStorage.setItem('v5_xp', xp);
+localStorage.setItem('v5_level', level);
+localStorage.setItem('v5_streak', streak);
+localStorage.setItem('v5_combo', combo);
+localStorage.setItem('v5_badges', JSON.stringify(badges));
 
 }
 
-document.getElementById('voiceBtn').onclick=speakBritish;
+document.getElementById('voiceBtn').onclick = ()=>{
 
-document.getElementById('openChestBtn').onclick=()=>{
+const lesson = lessons[current];
 
-speechBubble.innerText='Wow! You found a magic gift!';
+const utterance = new SpeechSynthesisUtterance(lesson.word);
 
-fireworks();
+const voices = speechSynthesis.getVoices();
+
+const british = voices.find(v=>v.lang==='en-GB');
+
+if(british){
+utterance.voice = british;
+}
+
+utterance.lang='en-GB';
+utterance.rate=.9;
+
+speechSynthesis.speak(utterance);
+
+};
+
+document.getElementById('feedBtn').onclick = ()=>{
+
+document.getElementById('petStatus').innerText =
+'🐱 Your pet loves you!';
+
+celebrate();
 
 };
 
 render();
+
+const canvas = document.getElementById('traceCanvas');
+const ctx = canvas.getContext('2d');
+
+ctx.lineWidth = 10;
+ctx.lineCap = 'round';
+ctx.strokeStyle = '#5b7cff';
+
+let drawing = false;
+
+function start(e){
+drawing = true;
+draw(e);
+}
+
+function end(){
+drawing = false;
+ctx.beginPath();
+}
+
+function draw(e){
+
+if(!drawing) return;
+
+const rect = canvas.getBoundingClientRect();
+
+const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+
+ctx.lineTo(x,y);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(x,y);
+
+}
+
+canvas.addEventListener('mousedown',start);
+canvas.addEventListener('mouseup',end);
+canvas.addEventListener('mousemove',draw);
+
+canvas.addEventListener('touchstart',start);
+canvas.addEventListener('touchend',end);
+canvas.addEventListener('touchmove',draw);
+
+document.getElementById('clearBtn').onclick = ()=>{
+ctx.clearRect(0,0,canvas.width,canvas.height);
+};

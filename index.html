@@ -4,44 +4,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABC Adventure V3</title>
+<title>ABC Adventure V5</title>
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-<div class="sky"></div>
-<div class="stars"></div>
+<div class="bg-clouds"></div>
 
 <div class="app">
 
 <header class="topbar">
 <div>
-<h1>ABC Adventure V3</h1>
-<p>Interactive Emotional English World</p>
+<h1>ABC Adventure V5</h1>
+<p>Interactive English Universe</p>
 </div>
 
 <div class="hud">
-<div class="xp">⭐ <span id="xp">0</span></div>
-<div class="level">🏆 Lv <span id="level">1</span></div>
+<div class="hud-box">⭐ <span id="xp">0</span></div>
+<div class="hud-box">🏆 Lv <span id="level">1</span></div>
+<div class="hud-box">🔥 <span id="streak">0</span></div>
 </div>
 </header>
 
-<section class="world-card">
-<div class="world-title">
-🌈 Magic Forest World
-</div>
+<section class="map-card">
+<h2>🌍 Adventure Worlds</h2>
 
-<div class="progress-wrap">
-<div class="progress-bar" id="progressBar"></div>
+<div class="worlds">
+<div class="world active">🌳 Forest</div>
+<div class="world">🌊 Ocean</div>
+<div class="world">🚀 Space</div>
+<div class="world">🏰 Castle</div>
 </div>
 </section>
 
-<section class="hero-card">
+<section class="mascot-card">
 
 <div class="mascot" id="mascot">🐰</div>
 
-<div class="speech-bubble" id="speechBubble">
+<div class="speech" id="speech">
 Hello little hero!
 </div>
 
@@ -49,12 +50,13 @@ Hello little hero!
 
 <section class="lesson-card">
 
-<div class="letter-box">
-<div class="letter" id="letter">A</div>
-<div class="word" id="word">Apple 🍎</div>
-</div>
+<div class="phonics">Phonics Sound: <span id="phonics">Ah</span></div>
 
-<button id="voiceBtn" class="voice-btn">
+<div class="letter" id="letter">A</div>
+
+<div class="word" id="word">Apple 🍎</div>
+
+<button class="primary-btn" id="voiceBtn">
 🔊 British Voice
 </button>
 
@@ -70,28 +72,54 @@ Hello little hero!
 
 </section>
 
-<section class="reward-card">
+<section class="trace-card">
 
-<div class="reward-header">
-<h2>Magic Sticker Book</h2>
-<div class="combo">🔥 Combo <span id="combo">0</span></div>
-</div>
+<h2>✍ Trace The Letter</h2>
 
-<div class="stickers" id="stickers"></div>
+<canvas id="traceCanvas" width="320" height="220"></canvas>
+
+<button class="clear-btn" id="clearBtn">Clear</button>
 
 </section>
 
-<section class="chest-card" id="chestCard">
+<section class="pet-card">
 
-<div class="chest">🎁</div>
+<h2>🐱 Pet Companion</h2>
 
-<h2>Treasure Reward</h2>
+<div class="pet">🐱</div>
 
-<p>Get 5 correct answers to unlock a magic surprise!</p>
+<div class="pet-status" id="petStatus">
+Your pet is happy!
+</div>
 
-<button id="openChestBtn" class="open-btn">
-Open Treasure
+<button class="feed-btn" id="feedBtn">
+🍪 Feed Pet
 </button>
+
+</section>
+
+<section class="reward-card">
+
+<div class="reward-header">
+<h2>🎁 Achievement Badges</h2>
+<div class="combo">Combo <span id="combo">0</span></div>
+</div>
+
+<div class="badges" id="badges"></div>
+
+</section>
+
+<section class="daily-card">
+
+<h2>📅 Daily Mission</h2>
+
+<p id="dailyMission">
+Get 3 correct answers today!
+</p>
+
+<div class="mission-progress">
+<div class="mission-bar" id="missionBar"></div>
+</div>
 
 </section>
 

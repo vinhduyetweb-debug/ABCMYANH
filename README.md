@@ -1,22 +1,20 @@
 
-# ABC Adventure V3
+# ABC Adventure V5
 
-Interactive emotional English learning mini app for kids.
-
-## Features
+Features:
 - British English voice
-- Emotional mascot
-- Fireworks success FX
-- Bubble explosion wrong FX
-- XP + level system
-- Combo system
-- Treasure reward
-- Sticker collection
-- Mobile-first UI
-- Offline ready
+- World map
+- Mascot system
+- Pet companion
+- Letter tracing
+- Daily mission
+- XP + level
+- Achievement badges
+- Emotional animations
+- Mobile-first responsive UI
 
-## Run Local
+Run local:
 Open index.html
 
-## Deploy
+Deploy:
 Upload directly to Vercel or Netlify.
