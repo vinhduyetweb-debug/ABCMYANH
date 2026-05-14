@@ -1,69 +1,103 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABC Adventure V2</title>
+<title>ABC Adventure V3</title>
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-<div class="floating-stars"></div>
+<div class="sky"></div>
+<div class="stars"></div>
 
 <div class="app">
 
 <header class="topbar">
 <div>
-<h1>ABC Adventure</h1>
-<p>Learn English Through Play</p>
+<h1>ABC Adventure V3</h1>
+<p>Interactive Emotional English World</p>
 </div>
 
-<div class="xp-box">
-⭐ <span id="xp">0</span>
+<div class="hud">
+<div class="xp">⭐ <span id="xp">0</span></div>
+<div class="level">🏆 Lv <span id="level">1</span></div>
 </div>
 </header>
 
-<section class="hero">
-<div class="mascot">🐰</div>
-
-<div>
-<h2>Welcome Little Hero!</h2>
-<p>Tap the right answer and collect magic stickers.</p>
+<section class="world-card">
+<div class="world-title">
+🌈 Magic Forest World
 </div>
+
+<div class="progress-wrap">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+</section>
+
+<section class="hero-card">
+
+<div class="mascot" id="mascot">🐰</div>
+
+<div class="speech-bubble" id="speechBubble">
+Hello little hero!
+</div>
+
 </section>
 
 <section class="lesson-card">
-<div class="level-box">
-LEVEL <span id="level">1</span>
-</div>
 
+<div class="letter-box">
 <div class="letter" id="letter">A</div>
 <div class="word" id="word">Apple 🍎</div>
+</div>
 
-<button id="speakBtn" class="primary-btn">
+<button id="voiceBtn" class="voice-btn">
 🔊 British Voice
 </button>
+
 </section>
 
-<section class="game-card">
+<section class="quiz-card">
+
 <h2>Choose The Correct Word</h2>
 
 <div class="choices" id="choices"></div>
 
-<div id="feedback" class="feedback"></div>
+<div class="feedback" id="feedback"></div>
+
 </section>
 
 <section class="reward-card">
-<h2>Sticker Collection</h2>
+
+<div class="reward-header">
+<h2>Magic Sticker Book</h2>
+<div class="combo">🔥 Combo <span id="combo">0</span></div>
+</div>
 
 <div class="stickers" id="stickers"></div>
+
+</section>
+
+<section class="chest-card" id="chestCard">
+
+<div class="chest">🎁</div>
+
+<h2>Treasure Reward</h2>
+
+<p>Get 5 correct answers to unlock a magic surprise!</p>
+
+<button id="openChestBtn" class="open-btn">
+Open Treasure
+</button>
+
 </section>
 
 </div>
 
-<div id="fireworks"></div>
-<div id="bubbleArea"></div>
+<div id="fxLayer"></div>
 
 <script src="app.js"></script>
 </body>
