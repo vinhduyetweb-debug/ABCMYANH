@@ -145,29 +145,54 @@ function speakVietnamese(text){
 
 window.speechSynthesis.cancel();
 
-const utterance = new SpeechSynthesisUtterance(text);
-
-utterance.lang = 'vi-VN';
-utterance.rate = 0.92;
-utterance.pitch = 1;
-
 const voices = speechSynthesis.getVoices();
 
 const vietnameseVoice =
 voices.find(v =>
-v.lang === 'vi-VN' &&
+v.lang.toLowerCase().includes('vi') &&
 (
-v.name.includes('Google') ||
-v.name.includes('Microsoft') ||
-v.name.includes('Vietnam')
+v.name.toLowerCase().includes('google') ||
+v.name.toLowerCase().includes('microsoft') ||
+v.name.toLowerCase().includes('an') ||
+v.name.toLowerCase().includes('linh') ||
+v.name.toLowerCase().includes('hoai')
 )
-) || voices.find(v => v.lang === 'vi-VN');
+) || voices.find(v =>
+v.lang.toLowerCase().includes('vi')
+);
+
+const utterance = new SpeechSynthesisUtterance(text);
+
+utterance.lang = 'vi-VN';
+
+/* slower + clearer Vietnamese pronunciation */
+utterance.rate = 0.72;
+utterance.pitch = 1;
+utterance.volume = 1;
 
 if(vietnameseVoice){
 utterance.voice = vietnameseVoice;
 }
 
+/* speak twice softly for kids clarity */
 speechSynthesis.speak(utterance);
+
+setTimeout(() => {
+
+const repeatUtterance = new SpeechSynthesisUtterance(text);
+
+repeatUtterance.lang = 'vi-VN';
+repeatUtterance.rate = 0.68;
+repeatUtterance.pitch = 1;
+repeatUtterance.volume = 1;
+
+if(vietnameseVoice){
+repeatUtterance.voice = vietnameseVoice;
+}
+
+speechSynthesis.speak(repeatUtterance);
+
+}, 900);
 
 }
 

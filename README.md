@@ -1,19 +1,17 @@
+WONDER ABC UNIVERSE V5
 
-WONDER ABC UNIVERSE V4
-
-NEW FEATURES:
-- Letter pronunciation button
-- American English voice
-- Vietnamese voice
+UPGRADE:
+- Clearer Vietnamese pronunciation
+- Slower Vietnamese speech speed
 - Better Vietnamese voice detection
-- Next / Back navigation
-- Clap sound effect
-- Emotional magical particles
-- Mobile-first premium UI
+- Repeat pronunciation for kids clarity
+- Improved learning experience
 
-VOICE NOTES:
-- Vietnamese voice depends on browser support
-- Chrome and Edge recommended
-- Android Chrome works best
+BEST EXPERIENCE:
+- Chrome
+- Microsoft Edge
+- Android Chrome
 
-DEPLOY READY
+IMPORTANT:
+Vietnamese voice quality depends on the device and browser installed voices.
+Windows + Edge usually provides the clearest Vietnamese pronunciation.
