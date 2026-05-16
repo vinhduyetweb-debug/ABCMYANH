@@ -4,64 +4,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wonder ABC Universe V8</title>
+<title>Wonder ABC Universe V9</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="bg glow1"></div>
-<div class="bg glow2"></div>
-
 <div class="app">
 
 <header>
-
 <div class="brand">
 <div class="logo">🌈</div>
 
 <div>
 <h1>Wonder ABC Universe</h1>
-<p>REAL EDUCATIONAL EDITION</p>
+<p>Interactive Learning World</p>
 </div>
 </div>
 
 <div class="score">
 ✨ <span id="score">0</span>
 </div>
-
 </header>
 
-<section class="hero">
+<section id="modeSelect" class="modeCard">
 
-<div class="mascot floating">
-🐰
-</div>
+<h2>Choose Learning Mode</h2>
 
-<div class="heroText">
+<div class="modeButtons">
 
-<div class="tag">
-AI-FIRST KIDS LEARNING
-</div>
+<button id="lettersMode" class="modeBtn">
+🔤 26 Letters
+</button>
 
-<h2>Play • Listen • Learn</h2>
-
-<p>
-Cute emotional learning world for children age 2–7.
-</p>
-
-<button id="startBtn">
-Start Adventure 🚀
+<button id="numbersMode" class="modeBtn">
+🔢 100 Numbers
 </button>
 
 </div>
 
 </section>
 
-<section id="lessonCard" class="card hidden">
+<section id="lessonCard" class="lessonCard hidden">
 
 <div class="worldTag">
-🌈 Magical Chibi Learning World
+🌈 Chibi Learning World
 </div>
 
 <div class="lessonBox pulse">
@@ -108,27 +95,31 @@ Next ➡
 
 </section>
 
-<section class="stickers">
-
-<div class="sticker">🐰</div>
-<div class="sticker">🦊</div>
-<div class="sticker">🐱</div>
-<div class="sticker">🐼</div>
-
-</section>
-
 </div>
 
 <script>
 
-const lessons = [{"letter": "A", "word": "Apple 🍎", "plain": "Apple", "meaning": "Quả táo", "sentence": "Đây là quả táo.", "emoji": "🍎"}, {"letter": "B", "word": "Balloon 🎈", "plain": "Balloon", "meaning": "Bóng bay", "sentence": "Bóng bay bay lên trời.", "emoji": "🎈"}, {"letter": "C", "word": "Cat 🐱", "plain": "Cat", "meaning": "Con mèo", "sentence": "Con mèo kêu meo meo.", "emoji": "🐱"}, {"letter": "D", "word": "Dog 🐶", "plain": "Dog", "meaning": "Con chó", "sentence": "Con chó đang chạy.", "emoji": "🐶"}, {"letter": "E", "word": "Egg 🥚", "plain": "Egg", "meaning": "Quả trứng", "sentence": "Quả trứng màu trắng.", "emoji": "🥚"}, {"letter": "F", "word": "Fox 🦊", "plain": "Fox", "meaning": "Con cáo", "sentence": "Con cáo có cái đuôi dài.", "emoji": "🦊"}, {"letter": "1", "word": "Number 1 🔢", "plain": "1", "meaning": "Số 1", "sentence": "Đây là số 1.", "emoji": "🔢"}, {"letter": "2", "word": "Number 2 🔢", "plain": "2", "meaning": "Số 2", "sentence": "Đây là số 2.", "emoji": "🔢"}, {"letter": "3", "word": "Number 3 🔢", "plain": "3", "meaning": "Số 3", "sentence": "Đây là số 3.", "emoji": "🔢"}, {"letter": "4", "word": "Number 4 🔢", "plain": "4", "meaning": "Số 4", "sentence": "Đây là số 4.", "emoji": "🔢"}, {"letter": "5", "word": "Number 5 🔢", "plain": "5", "meaning": "Số 5", "sentence": "Đây là số 5.", "emoji": "🔢"}, {"letter": "6", "word": "Number 6 🔢", "plain": "6", "meaning": "Số 6", "sentence": "Đây là số 6.", "emoji": "🔢"}, {"letter": "7", "word": "Number 7 🔢", "plain": "7", "meaning": "Số 7", "sentence": "Đây là số 7.", "emoji": "🔢"}, {"letter": "8", "word": "Number 8 🔢", "plain": "8", "meaning": "Số 8", "sentence": "Đây là số 8.", "emoji": "🔢"}, {"letter": "9", "word": "Number 9 🔢", "plain": "9", "meaning": "Số 9", "sentence": "Đây là số 9.", "emoji": "🔢"}, {"letter": "10", "word": "Number 10 🔢", "plain": "10", "meaning": "Số 10", "sentence": "Đây là số 10.", "emoji": "🔢"}, {"letter": "11", "word": "Number 11 🔢", "plain": "11", "meaning": "Số 11", "sentence": "Đây là số 11.", "emoji": "🔢"}, {"letter": "12", "word": "Number 12 🔢", "plain": "12", "meaning": "Số 12", "sentence": "Đây là số 12.", "emoji": "🔢"}, {"letter": "13", "word": "Number 13 🔢", "plain": "13", "meaning": "Số 13", "sentence": "Đây là số 13.", "emoji": "🔢"}, {"letter": "14", "word": "Number 14 🔢", "plain": "14", "meaning": "Số 14", "sentence": "Đây là số 14.", "emoji": "🔢"}, {"letter": "15", "word": "Number 15 🔢", "plain": "15", "meaning": "Số 15", "sentence": "Đây là số 15.", "emoji": "🔢"}, {"letter": "16", "word": "Number 16 🔢", "plain": "16", "meaning": "Số 16", "sentence": "Đây là số 16.", "emoji": "🔢"}, {"letter": "17", "word": "Number 17 🔢", "plain": "17", "meaning": "Số 17", "sentence": "Đây là số 17.", "emoji": "🔢"}, {"letter": "18", "word": "Number 18 🔢", "plain": "18", "meaning": "Số 18", "sentence": "Đây là số 18.", "emoji": "🔢"}, {"letter": "19", "word": "Number 19 🔢", "plain": "19", "meaning": "Số 19", "sentence": "Đây là số 19.", "emoji": "🔢"}, {"letter": "20", "word": "Number 20 🔢", "plain": "20", "meaning": "Số 20", "sentence": "Đây là số 20.", "emoji": "🔢"}, {"letter": "21", "word": "Number 21 🔢", "plain": "21", "meaning": "Số 21", "sentence": "Đây là số 21.", "emoji": "🔢"}, {"letter": "22", "word": "Number 22 🔢", "plain": "22", "meaning": "Số 22", "sentence": "Đây là số 22.", "emoji": "🔢"}, {"letter": "23", "word": "Number 23 🔢", "plain": "23", "meaning": "Số 23", "sentence": "Đây là số 23.", "emoji": "🔢"}, {"letter": "24", "word": "Number 24 🔢", "plain": "24", "meaning": "Số 24", "sentence": "Đây là số 24.", "emoji": "🔢"}, {"letter": "25", "word": "Number 25 🔢", "plain": "25", "meaning": "Số 25", "sentence": "Đây là số 25.", "emoji": "🔢"}, {"letter": "26", "word": "Number 26 🔢", "plain": "26", "meaning": "Số 26", "sentence": "Đây là số 26.", "emoji": "🔢"}, {"letter": "27", "word": "Number 27 🔢", "plain": "27", "meaning": "Số 27", "sentence": "Đây là số 27.", "emoji": "🔢"}, {"letter": "28", "word": "Number 28 🔢", "plain": "28", "meaning": "Số 28", "sentence": "Đây là số 28.", "emoji": "🔢"}, {"letter": "29", "word": "Number 29 🔢", "plain": "29", "meaning": "Số 29", "sentence": "Đây là số 29.", "emoji": "🔢"}, {"letter": "30", "word": "Number 30 🔢", "plain": "30", "meaning": "Số 30", "sentence": "Đây là số 30.", "emoji": "🔢"}, {"letter": "31", "word": "Number 31 🔢", "plain": "31", "meaning": "Số 31", "sentence": "Đây là số 31.", "emoji": "🔢"}, {"letter": "32", "word": "Number 32 🔢", "plain": "32", "meaning": "Số 32", "sentence": "Đây là số 32.", "emoji": "🔢"}, {"letter": "33", "word": "Number 33 🔢", "plain": "33", "meaning": "Số 33", "sentence": "Đây là số 33.", "emoji": "🔢"}, {"letter": "34", "word": "Number 34 🔢", "plain": "34", "meaning": "Số 34", "sentence": "Đây là số 34.", "emoji": "🔢"}, {"letter": "35", "word": "Number 35 🔢", "plain": "35", "meaning": "Số 35", "sentence": "Đây là số 35.", "emoji": "🔢"}, {"letter": "36", "word": "Number 36 🔢", "plain": "36", "meaning": "Số 36", "sentence": "Đây là số 36.", "emoji": "🔢"}, {"letter": "37", "word": "Number 37 🔢", "plain": "37", "meaning": "Số 37", "sentence": "Đây là số 37.", "emoji": "🔢"}, {"letter": "38", "word": "Number 38 🔢", "plain": "38", "meaning": "Số 38", "sentence": "Đây là số 38.", "emoji": "🔢"}, {"letter": "39", "word": "Number 39 🔢", "plain": "39", "meaning": "Số 39", "sentence": "Đây là số 39.", "emoji": "🔢"}, {"letter": "40", "word": "Number 40 🔢", "plain": "40", "meaning": "Số 40", "sentence": "Đây là số 40.", "emoji": "🔢"}, {"letter": "41", "word": "Number 41 🔢", "plain": "41", "meaning": "Số 41", "sentence": "Đây là số 41.", "emoji": "🔢"}, {"letter": "42", "word": "Number 42 🔢", "plain": "42", "meaning": "Số 42", "sentence": "Đây là số 42.", "emoji": "🔢"}, {"letter": "43", "word": "Number 43 🔢", "plain": "43", "meaning": "Số 43", "sentence": "Đây là số 43.", "emoji": "🔢"}, {"letter": "44", "word": "Number 44 🔢", "plain": "44", "meaning": "Số 44", "sentence": "Đây là số 44.", "emoji": "🔢"}, {"letter": "45", "word": "Number 45 🔢", "plain": "45", "meaning": "Số 45", "sentence": "Đây là số 45.", "emoji": "🔢"}, {"letter": "46", "word": "Number 46 🔢", "plain": "46", "meaning": "Số 46", "sentence": "Đây là số 46.", "emoji": "🔢"}, {"letter": "47", "word": "Number 47 🔢", "plain": "47", "meaning": "Số 47", "sentence": "Đây là số 47.", "emoji": "🔢"}, {"letter": "48", "word": "Number 48 🔢", "plain": "48", "meaning": "Số 48", "sentence": "Đây là số 48.", "emoji": "🔢"}, {"letter": "49", "word": "Number 49 🔢", "plain": "49", "meaning": "Số 49", "sentence": "Đây là số 49.", "emoji": "🔢"}, {"letter": "50", "word": "Number 50 🔢", "plain": "50", "meaning": "Số 50", "sentence": "Đây là số 50.", "emoji": "🔢"}, {"letter": "51", "word": "Number 51 🔢", "plain": "51", "meaning": "Số 51", "sentence": "Đây là số 51.", "emoji": "🔢"}, {"letter": "52", "word": "Number 52 🔢", "plain": "52", "meaning": "Số 52", "sentence": "Đây là số 52.", "emoji": "🔢"}, {"letter": "53", "word": "Number 53 🔢", "plain": "53", "meaning": "Số 53", "sentence": "Đây là số 53.", "emoji": "🔢"}, {"letter": "54", "word": "Number 54 🔢", "plain": "54", "meaning": "Số 54", "sentence": "Đây là số 54.", "emoji": "🔢"}, {"letter": "55", "word": "Number 55 🔢", "plain": "55", "meaning": "Số 55", "sentence": "Đây là số 55.", "emoji": "🔢"}, {"letter": "56", "word": "Number 56 🔢", "plain": "56", "meaning": "Số 56", "sentence": "Đây là số 56.", "emoji": "🔢"}, {"letter": "57", "word": "Number 57 🔢", "plain": "57", "meaning": "Số 57", "sentence": "Đây là số 57.", "emoji": "🔢"}, {"letter": "58", "word": "Number 58 🔢", "plain": "58", "meaning": "Số 58", "sentence": "Đây là số 58.", "emoji": "🔢"}, {"letter": "59", "word": "Number 59 🔢", "plain": "59", "meaning": "Số 59", "sentence": "Đây là số 59.", "emoji": "🔢"}, {"letter": "60", "word": "Number 60 🔢", "plain": "60", "meaning": "Số 60", "sentence": "Đây là số 60.", "emoji": "🔢"}, {"letter": "61", "word": "Number 61 🔢", "plain": "61", "meaning": "Số 61", "sentence": "Đây là số 61.", "emoji": "🔢"}, {"letter": "62", "word": "Number 62 🔢", "plain": "62", "meaning": "Số 62", "sentence": "Đây là số 62.", "emoji": "🔢"}, {"letter": "63", "word": "Number 63 🔢", "plain": "63", "meaning": "Số 63", "sentence": "Đây là số 63.", "emoji": "🔢"}, {"letter": "64", "word": "Number 64 🔢", "plain": "64", "meaning": "Số 64", "sentence": "Đây là số 64.", "emoji": "🔢"}, {"letter": "65", "word": "Number 65 🔢", "plain": "65", "meaning": "Số 65", "sentence": "Đây là số 65.", "emoji": "🔢"}, {"letter": "66", "word": "Number 66 🔢", "plain": "66", "meaning": "Số 66", "sentence": "Đây là số 66.", "emoji": "🔢"}, {"letter": "67", "word": "Number 67 🔢", "plain": "67", "meaning": "Số 67", "sentence": "Đây là số 67.", "emoji": "🔢"}, {"letter": "68", "word": "Number 68 🔢", "plain": "68", "meaning": "Số 68", "sentence": "Đây là số 68.", "emoji": "🔢"}, {"letter": "69", "word": "Number 69 🔢", "plain": "69", "meaning": "Số 69", "sentence": "Đây là số 69.", "emoji": "🔢"}, {"letter": "70", "word": "Number 70 🔢", "plain": "70", "meaning": "Số 70", "sentence": "Đây là số 70.", "emoji": "🔢"}, {"letter": "71", "word": "Number 71 🔢", "plain": "71", "meaning": "Số 71", "sentence": "Đây là số 71.", "emoji": "🔢"}, {"letter": "72", "word": "Number 72 🔢", "plain": "72", "meaning": "Số 72", "sentence": "Đây là số 72.", "emoji": "🔢"}, {"letter": "73", "word": "Number 73 🔢", "plain": "73", "meaning": "Số 73", "sentence": "Đây là số 73.", "emoji": "🔢"}, {"letter": "74", "word": "Number 74 🔢", "plain": "74", "meaning": "Số 74", "sentence": "Đây là số 74.", "emoji": "🔢"}, {"letter": "75", "word": "Number 75 🔢", "plain": "75", "meaning": "Số 75", "sentence": "Đây là số 75.", "emoji": "🔢"}, {"letter": "76", "word": "Number 76 🔢", "plain": "76", "meaning": "Số 76", "sentence": "Đây là số 76.", "emoji": "🔢"}, {"letter": "77", "word": "Number 77 🔢", "plain": "77", "meaning": "Số 77", "sentence": "Đây là số 77.", "emoji": "🔢"}, {"letter": "78", "word": "Number 78 🔢", "plain": "78", "meaning": "Số 78", "sentence": "Đây là số 78.", "emoji": "🔢"}, {"letter": "79", "word": "Number 79 🔢", "plain": "79", "meaning": "Số 79", "sentence": "Đây là số 79.", "emoji": "🔢"}, {"letter": "80", "word": "Number 80 🔢", "plain": "80", "meaning": "Số 80", "sentence": "Đây là số 80.", "emoji": "🔢"}, {"letter": "81", "word": "Number 81 🔢", "plain": "81", "meaning": "Số 81", "sentence": "Đây là số 81.", "emoji": "🔢"}, {"letter": "82", "word": "Number 82 🔢", "plain": "82", "meaning": "Số 82", "sentence": "Đây là số 82.", "emoji": "🔢"}, {"letter": "83", "word": "Number 83 🔢", "plain": "83", "meaning": "Số 83", "sentence": "Đây là số 83.", "emoji": "🔢"}, {"letter": "84", "word": "Number 84 🔢", "plain": "84", "meaning": "Số 84", "sentence": "Đây là số 84.", "emoji": "🔢"}, {"letter": "85", "word": "Number 85 🔢", "plain": "85", "meaning": "Số 85", "sentence": "Đây là số 85.", "emoji": "🔢"}, {"letter": "86", "word": "Number 86 🔢", "plain": "86", "meaning": "Số 86", "sentence": "Đây là số 86.", "emoji": "🔢"}, {"letter": "87", "word": "Number 87 🔢", "plain": "87", "meaning": "Số 87", "sentence": "Đây là số 87.", "emoji": "🔢"}, {"letter": "88", "word": "Number 88 🔢", "plain": "88", "meaning": "Số 88", "sentence": "Đây là số 88.", "emoji": "🔢"}, {"letter": "89", "word": "Number 89 🔢", "plain": "89", "meaning": "Số 89", "sentence": "Đây là số 89.", "emoji": "🔢"}, {"letter": "90", "word": "Number 90 🔢", "plain": "90", "meaning": "Số 90", "sentence": "Đây là số 90.", "emoji": "🔢"}, {"letter": "91", "word": "Number 91 🔢", "plain": "91", "meaning": "Số 91", "sentence": "Đây là số 91.", "emoji": "🔢"}, {"letter": "92", "word": "Number 92 🔢", "plain": "92", "meaning": "Số 92", "sentence": "Đây là số 92.", "emoji": "🔢"}, {"letter": "93", "word": "Number 93 🔢", "plain": "93", "meaning": "Số 93", "sentence": "Đây là số 93.", "emoji": "🔢"}, {"letter": "94", "word": "Number 94 🔢", "plain": "94", "meaning": "Số 94", "sentence": "Đây là số 94.", "emoji": "🔢"}, {"letter": "95", "word": "Number 95 🔢", "plain": "95", "meaning": "Số 95", "sentence": "Đây là số 95.", "emoji": "🔢"}, {"letter": "96", "word": "Number 96 🔢", "plain": "96", "meaning": "Số 96", "sentence": "Đây là số 96.", "emoji": "🔢"}, {"letter": "97", "word": "Number 97 🔢", "plain": "97", "meaning": "Số 97", "sentence": "Đây là số 97.", "emoji": "🔢"}, {"letter": "98", "word": "Number 98 🔢", "plain": "98", "meaning": "Số 98", "sentence": "Đây là số 98.", "emoji": "🔢"}, {"letter": "99", "word": "Number 99 🔢", "plain": "99", "meaning": "Số 99", "sentence": "Đây là số 99.", "emoji": "🔢"}, {"letter": "100", "word": "Number 100 🔢", "plain": "100", "meaning": "Số 100", "sentence": "Đây là số 100.", "emoji": "🔢"}];
+const letters = [{"letter": "A", "word": "Apple 🍎", "plain": "Apple", "meaning": "Quả táo", "sentence": "Đây là quả táo.", "emoji": "🍎"}, {"letter": "B", "word": "Balloon 🎈", "plain": "Balloon", "meaning": "Bóng bay", "sentence": "Bóng bay bay lên trời.", "emoji": "🎈"}, {"letter": "C", "word": "Cat 🐱", "plain": "Cat", "meaning": "Con mèo", "sentence": "Con mèo kêu meo meo.", "emoji": "🐱"}, {"letter": "D", "word": "Dog 🐶", "plain": "Dog", "meaning": "Con chó", "sentence": "Con chó đang chạy.", "emoji": "🐶"}, {"letter": "E", "word": "Egg 🥚", "plain": "Egg", "meaning": "Quả trứng", "sentence": "Quả trứng màu trắng.", "emoji": "🥚"}, {"letter": "F", "word": "Fox 🦊", "plain": "Fox", "meaning": "Con cáo", "sentence": "Con cáo có cái đuôi dài.", "emoji": "🦊"}];
+const numbers = [{"letter": "1", "word": "Number 1 🔢", "plain": "1", "meaning": "Số 1", "sentence": "Đây là số 1.", "emoji": "🔢"}, {"letter": "2", "word": "Number 2 🔢", "plain": "2", "meaning": "Số 2", "sentence": "Đây là số 2.", "emoji": "🔢"}, {"letter": "3", "word": "Number 3 🔢", "plain": "3", "meaning": "Số 3", "sentence": "Đây là số 3.", "emoji": "🔢"}, {"letter": "4", "word": "Number 4 🔢", "plain": "4", "meaning": "Số 4", "sentence": "Đây là số 4.", "emoji": "🔢"}, {"letter": "5", "word": "Number 5 🔢", "plain": "5", "meaning": "Số 5", "sentence": "Đây là số 5.", "emoji": "🔢"}, {"letter": "6", "word": "Number 6 🔢", "plain": "6", "meaning": "Số 6", "sentence": "Đây là số 6.", "emoji": "🔢"}, {"letter": "7", "word": "Number 7 🔢", "plain": "7", "meaning": "Số 7", "sentence": "Đây là số 7.", "emoji": "🔢"}, {"letter": "8", "word": "Number 8 🔢", "plain": "8", "meaning": "Số 8", "sentence": "Đây là số 8.", "emoji": "🔢"}, {"letter": "9", "word": "Number 9 🔢", "plain": "9", "meaning": "Số 9", "sentence": "Đây là số 9.", "emoji": "🔢"}, {"letter": "10", "word": "Number 10 🔢", "plain": "10", "meaning": "Số 10", "sentence": "Đây là số 10.", "emoji": "🔢"}, {"letter": "11", "word": "Number 11 🔢", "plain": "11", "meaning": "Số 11", "sentence": "Đây là số 11.", "emoji": "🔢"}, {"letter": "12", "word": "Number 12 🔢", "plain": "12", "meaning": "Số 12", "sentence": "Đây là số 12.", "emoji": "🔢"}, {"letter": "13", "word": "Number 13 🔢", "plain": "13", "meaning": "Số 13", "sentence": "Đây là số 13.", "emoji": "🔢"}, {"letter": "14", "word": "Number 14 🔢", "plain": "14", "meaning": "Số 14", "sentence": "Đây là số 14.", "emoji": "🔢"}, {"letter": "15", "word": "Number 15 🔢", "plain": "15", "meaning": "Số 15", "sentence": "Đây là số 15.", "emoji": "🔢"}, {"letter": "16", "word": "Number 16 🔢", "plain": "16", "meaning": "Số 16", "sentence": "Đây là số 16.", "emoji": "🔢"}, {"letter": "17", "word": "Number 17 🔢", "plain": "17", "meaning": "Số 17", "sentence": "Đây là số 17.", "emoji": "🔢"}, {"letter": "18", "word": "Number 18 🔢", "plain": "18", "meaning": "Số 18", "sentence": "Đây là số 18.", "emoji": "🔢"}, {"letter": "19", "word": "Number 19 🔢", "plain": "19", "meaning": "Số 19", "sentence": "Đây là số 19.", "emoji": "🔢"}, {"letter": "20", "word": "Number 20 🔢", "plain": "20", "meaning": "Số 20", "sentence": "Đây là số 20.", "emoji": "🔢"}, {"letter": "21", "word": "Number 21 🔢", "plain": "21", "meaning": "Số 21", "sentence": "Đây là số 21.", "emoji": "🔢"}, {"letter": "22", "word": "Number 22 🔢", "plain": "22", "meaning": "Số 22", "sentence": "Đây là số 22.", "emoji": "🔢"}, {"letter": "23", "word": "Number 23 🔢", "plain": "23", "meaning": "Số 23", "sentence": "Đây là số 23.", "emoji": "🔢"}, {"letter": "24", "word": "Number 24 🔢", "plain": "24", "meaning": "Số 24", "sentence": "Đây là số 24.", "emoji": "🔢"}, {"letter": "25", "word": "Number 25 🔢", "plain": "25", "meaning": "Số 25", "sentence": "Đây là số 25.", "emoji": "🔢"}, {"letter": "26", "word": "Number 26 🔢", "plain": "26", "meaning": "Số 26", "sentence": "Đây là số 26.", "emoji": "🔢"}, {"letter": "27", "word": "Number 27 🔢", "plain": "27", "meaning": "Số 27", "sentence": "Đây là số 27.", "emoji": "🔢"}, {"letter": "28", "word": "Number 28 🔢", "plain": "28", "meaning": "Số 28", "sentence": "Đây là số 28.", "emoji": "🔢"}, {"letter": "29", "word": "Number 29 🔢", "plain": "29", "meaning": "Số 29", "sentence": "Đây là số 29.", "emoji": "🔢"}, {"letter": "30", "word": "Number 30 🔢", "plain": "30", "meaning": "Số 30", "sentence": "Đây là số 30.", "emoji": "🔢"}, {"letter": "31", "word": "Number 31 🔢", "plain": "31", "meaning": "Số 31", "sentence": "Đây là số 31.", "emoji": "🔢"}, {"letter": "32", "word": "Number 32 🔢", "plain": "32", "meaning": "Số 32", "sentence": "Đây là số 32.", "emoji": "🔢"}, {"letter": "33", "word": "Number 33 🔢", "plain": "33", "meaning": "Số 33", "sentence": "Đây là số 33.", "emoji": "🔢"}, {"letter": "34", "word": "Number 34 🔢", "plain": "34", "meaning": "Số 34", "sentence": "Đây là số 34.", "emoji": "🔢"}, {"letter": "35", "word": "Number 35 🔢", "plain": "35", "meaning": "Số 35", "sentence": "Đây là số 35.", "emoji": "🔢"}, {"letter": "36", "word": "Number 36 🔢", "plain": "36", "meaning": "Số 36", "sentence": "Đây là số 36.", "emoji": "🔢"}, {"letter": "37", "word": "Number 37 🔢", "plain": "37", "meaning": "Số 37", "sentence": "Đây là số 37.", "emoji": "🔢"}, {"letter": "38", "word": "Number 38 🔢", "plain": "38", "meaning": "Số 38", "sentence": "Đây là số 38.", "emoji": "🔢"}, {"letter": "39", "word": "Number 39 🔢", "plain": "39", "meaning": "Số 39", "sentence": "Đây là số 39.", "emoji": "🔢"}, {"letter": "40", "word": "Number 40 🔢", "plain": "40", "meaning": "Số 40", "sentence": "Đây là số 40.", "emoji": "🔢"}, {"letter": "41", "word": "Number 41 🔢", "plain": "41", "meaning": "Số 41", "sentence": "Đây là số 41.", "emoji": "🔢"}, {"letter": "42", "word": "Number 42 🔢", "plain": "42", "meaning": "Số 42", "sentence": "Đây là số 42.", "emoji": "🔢"}, {"letter": "43", "word": "Number 43 🔢", "plain": "43", "meaning": "Số 43", "sentence": "Đây là số 43.", "emoji": "🔢"}, {"letter": "44", "word": "Number 44 🔢", "plain": "44", "meaning": "Số 44", "sentence": "Đây là số 44.", "emoji": "🔢"}, {"letter": "45", "word": "Number 45 🔢", "plain": "45", "meaning": "Số 45", "sentence": "Đây là số 45.", "emoji": "🔢"}, {"letter": "46", "word": "Number 46 🔢", "plain": "46", "meaning": "Số 46", "sentence": "Đây là số 46.", "emoji": "🔢"}, {"letter": "47", "word": "Number 47 🔢", "plain": "47", "meaning": "Số 47", "sentence": "Đây là số 47.", "emoji": "🔢"}, {"letter": "48", "word": "Number 48 🔢", "plain": "48", "meaning": "Số 48", "sentence": "Đây là số 48.", "emoji": "🔢"}, {"letter": "49", "word": "Number 49 🔢", "plain": "49", "meaning": "Số 49", "sentence": "Đây là số 49.", "emoji": "🔢"}, {"letter": "50", "word": "Number 50 🔢", "plain": "50", "meaning": "Số 50", "sentence": "Đây là số 50.", "emoji": "🔢"}, {"letter": "51", "word": "Number 51 🔢", "plain": "51", "meaning": "Số 51", "sentence": "Đây là số 51.", "emoji": "🔢"}, {"letter": "52", "word": "Number 52 🔢", "plain": "52", "meaning": "Số 52", "sentence": "Đây là số 52.", "emoji": "🔢"}, {"letter": "53", "word": "Number 53 🔢", "plain": "53", "meaning": "Số 53", "sentence": "Đây là số 53.", "emoji": "🔢"}, {"letter": "54", "word": "Number 54 🔢", "plain": "54", "meaning": "Số 54", "sentence": "Đây là số 54.", "emoji": "🔢"}, {"letter": "55", "word": "Number 55 🔢", "plain": "55", "meaning": "Số 55", "sentence": "Đây là số 55.", "emoji": "🔢"}, {"letter": "56", "word": "Number 56 🔢", "plain": "56", "meaning": "Số 56", "sentence": "Đây là số 56.", "emoji": "🔢"}, {"letter": "57", "word": "Number 57 🔢", "plain": "57", "meaning": "Số 57", "sentence": "Đây là số 57.", "emoji": "🔢"}, {"letter": "58", "word": "Number 58 🔢", "plain": "58", "meaning": "Số 58", "sentence": "Đây là số 58.", "emoji": "🔢"}, {"letter": "59", "word": "Number 59 🔢", "plain": "59", "meaning": "Số 59", "sentence": "Đây là số 59.", "emoji": "🔢"}, {"letter": "60", "word": "Number 60 🔢", "plain": "60", "meaning": "Số 60", "sentence": "Đây là số 60.", "emoji": "🔢"}, {"letter": "61", "word": "Number 61 🔢", "plain": "61", "meaning": "Số 61", "sentence": "Đây là số 61.", "emoji": "🔢"}, {"letter": "62", "word": "Number 62 🔢", "plain": "62", "meaning": "Số 62", "sentence": "Đây là số 62.", "emoji": "🔢"}, {"letter": "63", "word": "Number 63 🔢", "plain": "63", "meaning": "Số 63", "sentence": "Đây là số 63.", "emoji": "🔢"}, {"letter": "64", "word": "Number 64 🔢", "plain": "64", "meaning": "Số 64", "sentence": "Đây là số 64.", "emoji": "🔢"}, {"letter": "65", "word": "Number 65 🔢", "plain": "65", "meaning": "Số 65", "sentence": "Đây là số 65.", "emoji": "🔢"}, {"letter": "66", "word": "Number 66 🔢", "plain": "66", "meaning": "Số 66", "sentence": "Đây là số 66.", "emoji": "🔢"}, {"letter": "67", "word": "Number 67 🔢", "plain": "67", "meaning": "Số 67", "sentence": "Đây là số 67.", "emoji": "🔢"}, {"letter": "68", "word": "Number 68 🔢", "plain": "68", "meaning": "Số 68", "sentence": "Đây là số 68.", "emoji": "🔢"}, {"letter": "69", "word": "Number 69 🔢", "plain": "69", "meaning": "Số 69", "sentence": "Đây là số 69.", "emoji": "🔢"}, {"letter": "70", "word": "Number 70 🔢", "plain": "70", "meaning": "Số 70", "sentence": "Đây là số 70.", "emoji": "🔢"}, {"letter": "71", "word": "Number 71 🔢", "plain": "71", "meaning": "Số 71", "sentence": "Đây là số 71.", "emoji": "🔢"}, {"letter": "72", "word": "Number 72 🔢", "plain": "72", "meaning": "Số 72", "sentence": "Đây là số 72.", "emoji": "🔢"}, {"letter": "73", "word": "Number 73 🔢", "plain": "73", "meaning": "Số 73", "sentence": "Đây là số 73.", "emoji": "🔢"}, {"letter": "74", "word": "Number 74 🔢", "plain": "74", "meaning": "Số 74", "sentence": "Đây là số 74.", "emoji": "🔢"}, {"letter": "75", "word": "Number 75 🔢", "plain": "75", "meaning": "Số 75", "sentence": "Đây là số 75.", "emoji": "🔢"}, {"letter": "76", "word": "Number 76 🔢", "plain": "76", "meaning": "Số 76", "sentence": "Đây là số 76.", "emoji": "🔢"}, {"letter": "77", "word": "Number 77 🔢", "plain": "77", "meaning": "Số 77", "sentence": "Đây là số 77.", "emoji": "🔢"}, {"letter": "78", "word": "Number 78 🔢", "plain": "78", "meaning": "Số 78", "sentence": "Đây là số 78.", "emoji": "🔢"}, {"letter": "79", "word": "Number 79 🔢", "plain": "79", "meaning": "Số 79", "sentence": "Đây là số 79.", "emoji": "🔢"}, {"letter": "80", "word": "Number 80 🔢", "plain": "80", "meaning": "Số 80", "sentence": "Đây là số 80.", "emoji": "🔢"}, {"letter": "81", "word": "Number 81 🔢", "plain": "81", "meaning": "Số 81", "sentence": "Đây là số 81.", "emoji": "🔢"}, {"letter": "82", "word": "Number 82 🔢", "plain": "82", "meaning": "Số 82", "sentence": "Đây là số 82.", "emoji": "🔢"}, {"letter": "83", "word": "Number 83 🔢", "plain": "83", "meaning": "Số 83", "sentence": "Đây là số 83.", "emoji": "🔢"}, {"letter": "84", "word": "Number 84 🔢", "plain": "84", "meaning": "Số 84", "sentence": "Đây là số 84.", "emoji": "🔢"}, {"letter": "85", "word": "Number 85 🔢", "plain": "85", "meaning": "Số 85", "sentence": "Đây là số 85.", "emoji": "🔢"}, {"letter": "86", "word": "Number 86 🔢", "plain": "86", "meaning": "Số 86", "sentence": "Đây là số 86.", "emoji": "🔢"}, {"letter": "87", "word": "Number 87 🔢", "plain": "87", "meaning": "Số 87", "sentence": "Đây là số 87.", "emoji": "🔢"}, {"letter": "88", "word": "Number 88 🔢", "plain": "88", "meaning": "Số 88", "sentence": "Đây là số 88.", "emoji": "🔢"}, {"letter": "89", "word": "Number 89 🔢", "plain": "89", "meaning": "Số 89", "sentence": "Đây là số 89.", "emoji": "🔢"}, {"letter": "90", "word": "Number 90 🔢", "plain": "90", "meaning": "Số 90", "sentence": "Đây là số 90.", "emoji": "🔢"}, {"letter": "91", "word": "Number 91 🔢", "plain": "91", "meaning": "Số 91", "sentence": "Đây là số 91.", "emoji": "🔢"}, {"letter": "92", "word": "Number 92 🔢", "plain": "92", "meaning": "Số 92", "sentence": "Đây là số 92.", "emoji": "🔢"}, {"letter": "93", "word": "Number 93 🔢", "plain": "93", "meaning": "Số 93", "sentence": "Đây là số 93.", "emoji": "🔢"}, {"letter": "94", "word": "Number 94 🔢", "plain": "94", "meaning": "Số 94", "sentence": "Đây là số 94.", "emoji": "🔢"}, {"letter": "95", "word": "Number 95 🔢", "plain": "95", "meaning": "Số 95", "sentence": "Đây là số 95.", "emoji": "🔢"}, {"letter": "96", "word": "Number 96 🔢", "plain": "96", "meaning": "Số 96", "sentence": "Đây là số 96.", "emoji": "🔢"}, {"letter": "97", "word": "Number 97 🔢", "plain": "97", "meaning": "Số 97", "sentence": "Đây là số 97.", "emoji": "🔢"}, {"letter": "98", "word": "Number 98 🔢", "plain": "98", "meaning": "Số 98", "sentence": "Đây là số 98.", "emoji": "🔢"}, {"letter": "99", "word": "Number 99 🔢", "plain": "99", "meaning": "Số 99", "sentence": "Đây là số 99.", "emoji": "🔢"}, {"letter": "100", "word": "Number 100 🔢", "plain": "100", "meaning": "Số 100", "sentence": "Đây là số 100.", "emoji": "🔢"}];
 
+let lessons = [];
 let current = 0;
 let score = 0;
 
 const lessonCard = document.getElementById('lessonCard');
 
-document.getElementById('startBtn').onclick = () => {
+document.getElementById('lettersMode').onclick = () => {
+ lessons = letters;
+ startMode();
+}
+
+document.getElementById('numbersMode').onclick = () => {
+ lessons = numbers;
+ startMode();
+}
+
+function startMode(){
+ document.getElementById('modeSelect').classList.add('hidden');
  lessonCard.classList.remove('hidden');
  renderLesson();
 }
@@ -149,7 +140,6 @@ function speak(text, lang){
  const u = new SpeechSynthesisUtterance(text);
 
  u.lang = lang;
-
  u.rate = lang === 'vi-VN' ? 0.72 : 0.82;
  u.pitch = 1;
  u.volume = 1;
@@ -166,7 +156,14 @@ function speak(text, lang){
 }
 
 document.getElementById('letterBtn').onclick = () => {
- speak(lessons[current].letter, 'en-US');
+
+ const currentLetter = lessons[current].letter;
+
+ /* FIX: only pronounce one single character */
+ const singleChar = currentLetter.toString().charAt(0);
+
+ speak(singleChar, 'en-US');
+
 }
 
 document.getElementById('englishBtn').onclick = () => {
@@ -174,7 +171,10 @@ document.getElementById('englishBtn').onclick = () => {
 }
 
 document.getElementById('vietnameseBtn').onclick = () => {
- speak(lessons[current].meaning + '. ' + lessons[current].sentence, 'vi-VN');
+ speak(
+ lessons[current].meaning + '. ' + lessons[current].sentence,
+ 'vi-VN'
+ );
 }
 
 document.getElementById('nextBtn').onclick = () => {
@@ -194,14 +194,16 @@ document.getElementById('nextBtn').onclick = () => {
 
 document.getElementById('prevBtn').onclick = () => {
 
- current = current === 0 ? lessons.length -1 : current -1;
+ current = current === 0 ? lessons.length - 1 : current - 1;
 
  renderLesson();
 
 }
 
 function clap(){
- const audio = new Audio('https://actions.google.com/sounds/v1/human_voices/applause.ogg');
+ const audio = new Audio(
+ 'https://actions.google.com/sounds/v1/human_voices/applause.ogg'
+ );
 
  audio.volume = .6;
 
@@ -214,14 +216,15 @@ function particles(){
 
   const p = document.createElement('div');
 
-  p.innerHTML = ['✨','🌈','⭐','💖'][Math.floor(Math.random()*4)];
+  p.innerHTML =
+  ['✨','🌈','⭐','💖'][Math.floor(Math.random()*4)];
 
   p.style.position='fixed';
   p.style.left=Math.random()*window.innerWidth+'px';
   p.style.top='55%';
   p.style.fontSize='30px';
-  p.style.zIndex='9999';
   p.style.transition='1.2s ease-out';
+  p.style.zIndex='9999';
 
   document.body.appendChild(p);
 

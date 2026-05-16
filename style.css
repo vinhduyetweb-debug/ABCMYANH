@@ -48,63 +48,38 @@ backdrop-filter:blur(12px);
 font-weight:900;
 }
 
-.hero,
-.card,
-.stickers{
+.modeCard,
+.lessonCard{
 background:#ffffff18;
 backdrop-filter:blur(20px);
 border-radius:34px;
 padding:24px;
-margin-bottom:20px;
 border:1px solid #ffffff22;
 box-shadow:0 10px 40px rgba(0,0,0,.22);
+margin-bottom:20px;
 }
 
-.hero{
+.modeCard h2{
+font-size:30px;
+text-align:center;
+margin-bottom:24px;
+}
+
+.modeButtons{
 display:flex;
-gap:18px;
-align-items:center;
+flex-direction:column;
+gap:16px;
 }
 
-.mascot{
-font-size:110px;
-}
-
-.tag{
-display:inline-block;
-padding:8px 14px;
-border-radius:999px;
-background:#ffffff22;
-font-size:11px;
-margin-bottom:14px;
-}
-
-.hero h2{
-font-size:34px;
-line-height:1.1;
-margin-bottom:14px;
-}
-
-.hero p{
-opacity:.85;
-line-height:1.6;
-margin-bottom:18px;
-}
-
-button{
+.modeBtn{
+padding:24px;
 border:none;
-cursor:pointer;
-transition:.25s ease;
-font-weight:800;
-}
-
-#startBtn{
-width:100%;
-padding:18px;
-border-radius:24px;
+border-radius:28px;
+font-size:22px;
+font-weight:900;
 background:white;
-color:#5641e0;
-font-size:18px;
+color:#5a45dd;
+cursor:pointer;
 }
 
 .worldTag{
@@ -138,15 +113,14 @@ margin-top:10px;
 }
 
 .meaning{
-font-size:22px;
 margin-top:12px;
+font-size:22px;
 font-weight:700;
 }
 
 .sentence{
 margin-top:14px;
 font-size:18px;
-opacity:.92;
 line-height:1.5;
 }
 
@@ -161,47 +135,24 @@ margin-top:20px;
 .nav button{
 flex:1;
 padding:16px;
+border:none;
 border-radius:20px;
 background:#ffffff22;
 color:white;
-}
-
-.stickers{
-display:flex;
-justify-content:space-around;
-}
-
-.sticker{
-width:70px;
-height:70px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:22px;
-background:#ffffff12;
-font-size:44px;
+font-weight:800;
+cursor:pointer;
 }
 
 .hidden{
 display:none;
 }
 
-.floating{
-animation:float 3s ease-in-out infinite;
-}
-
 .pulse{
 animation:pulse 2s infinite;
 }
 
-@keyframes float{{
-0%{{transform:translateY(0)}}
-50%{{transform:translateY(-12px)}}
-100%{{transform:translateY(0)}}
-}}
-
-@keyframes pulse{{
-0%{{transform:scale(1)}}
-50%{{transform:scale(1.03)}}
-100%{{transform:scale(1)}}
-}}
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.03)}
+100%{transform:scale(1)}
+}
