@@ -3,14 +3,14 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Inter, Arial, sans-serif;
+  font-family:Inter,Arial,sans-serif;
 }
 
 body{
   background:
-    radial-gradient(circle at top left,#ffb5d0 0%,transparent 30%),
-    radial-gradient(circle at bottom right,#8fdcff 0%,transparent 35%),
-    linear-gradient(180deg,#6a5cff,#32246f);
+    radial-gradient(circle at top left,#ffbfd6,transparent 30%),
+    radial-gradient(circle at bottom right,#9ce6ff,transparent 30%),
+    linear-gradient(180deg,#5e4cff,#271b63);
   min-height:100vh;
   overflow-x:hidden;
   color:white;
@@ -19,17 +19,30 @@ body{
 .app{
   max-width:480px;
   margin:auto;
-  min-height:100vh;
   padding:20px;
   position:relative;
 }
 
-.background-glow{
+.ambient{
   position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:radial-gradient(circle,#ffffff22 0%,transparent 70%);
-  filter:blur(60px);
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:.35;
+  z-index:-1;
+}
+
+.ambient-1{
+  background:#ff89c8;
+  top:-100px;
+  left:-100px;
+}
+
+.ambient-2{
+  background:#7fdfff;
+  bottom:-100px;
+  right:-100px;
 }
 
 .topbar{
@@ -41,76 +54,73 @@ body{
 
 .brand{
   display:flex;
-  gap:14px;
   align-items:center;
+  gap:14px;
 }
 
 .logo{
-  font-size:40px;
+  font-size:44px;
 }
 
 .brand h1{
-  font-size:24px;
+  font-size:26px;
   font-weight:900;
 }
 
 .brand p{
-  opacity:.7;
   font-size:12px;
+  opacity:.75;
 }
 
-.coins{
-  background:#ffffff22;
-  padding:12px 16px;
+.score{
+  background:#ffffff1f;
+  backdrop-filter:blur(14px);
+  padding:14px 18px;
   border-radius:999px;
-  backdrop-filter:blur(12px);
-  font-weight:700;
+  font-weight:800;
 }
 
 .hero-card,
 .lesson-card,
-.reward-card,
-.collection-card,
-.worlds-card{
+.reward-card{
   background:#ffffff18;
-  backdrop-filter:blur(20px);
   border:1px solid #ffffff22;
-  border-radius:32px;
+  backdrop-filter:blur(20px);
+  border-radius:34px;
   padding:24px;
   margin-bottom:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  box-shadow:0 12px 40px rgba(0,0,0,.22);
 }
 
 .hero-card{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:12px;
+  gap:14px;
 }
 
-.tag{
-  background:#ffffff22;
-  border-radius:999px;
-  padding:8px 14px;
+.pill{
   display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#ffffff20;
   font-size:11px;
   margin-bottom:16px;
 }
 
-.hero-text h2{
-  font-size:32px;
+.hero-card h2{
+  font-size:34px;
   line-height:1.1;
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
 
-.hero-text p{
-  opacity:.85;
+.hero-card p{
+  opacity:.88;
   line-height:1.6;
   margin-bottom:18px;
 }
 
-.hero-character{
-  font-size:90px;
+.mascot{
+  font-size:92px;
 }
 
 .primary-btn,
@@ -122,62 +132,67 @@ body{
 }
 
 .primary-btn{
-  background:white;
-  color:#4a36c7;
-  padding:18px 22px;
-  border-radius:22px;
-  font-size:18px;
-  font-weight:800;
   width:100%;
-}
-
-.primary-btn:hover{
-  transform:translateY(-2px) scale(1.02);
+  background:white;
+  color:#4631d4;
+  padding:18px;
+  border-radius:24px;
+  font-size:18px;
+  font-weight:900;
 }
 
 .secondary-btn{
-  width:100%;
-  background:#ffffff20;
+  flex:1;
+  background:#ffffff18;
   color:white;
   padding:16px;
   border-radius:20px;
-  margin-top:16px;
   font-weight:700;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
 }
 
 .lesson-top{
   display:flex;
   justify-content:space-between;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
-.world-pill,
-.level-pill{
+.mini-pill{
   background:#ffffff18;
-  border-radius:999px;
   padding:10px 14px;
-  font-size:12px;
+  border-radius:999px;
+  font-size:11px;
 }
 
-.letter-area{
+.letter-box{
+  text-align:center;
   background:#ffffff12;
   border-radius:28px;
-  padding:32px;
-  text-align:center;
+  padding:30px;
 }
 
-.letter-area h1{
-  font-size:100px;
-  line-height:1;
+.letter-box h1{
+  font-size:110px;
 }
 
-.letter-area p{
-  font-size:24px;
+.letter-box h3{
+  font-size:30px;
   margin-top:8px;
 }
 
+.phonetic{
+  margin-top:10px;
+  opacity:.75;
+  font-size:18px;
+}
+
 .quiz{
-  margin-top:24px;
+  margin-top:28px;
 }
 
 .quiz h3{
@@ -191,88 +206,37 @@ body{
 
 .choice{
   flex:1;
-  padding:24px 0;
-  border-radius:24px;
-  font-size:38px;
-  background:#ffffff12;
+  background:#ffffff14;
   color:white;
+  padding:26px 0;
+  border-radius:24px;
+  font-size:42px;
 }
 
 .choice:hover{
-  transform:scale(1.08);
+  transform:scale(1.05);
 }
 
 .reward-card{
   text-align:center;
 }
 
-.reward-emoji{
+.reward-icon{
   font-size:90px;
 }
 
-.pet-card{
-  margin:24px 0;
-  display:flex;
-  gap:16px;
-  align-items:center;
-  background:#ffffff10;
+.pet-box{
+  margin-top:24px;
+  background:#ffffff12;
+  border-radius:28px;
   padding:18px;
-  border-radius:24px;
+  display:flex;
+  gap:14px;
+  align-items:center;
 }
 
 .pet{
-  font-size:56px;
-}
-
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  margin-bottom:18px;
-}
-
-.section-title span{
-  font-size:12px;
-  opacity:.7;
-}
-
-.stickers{
-  display:flex;
-  gap:12px;
-}
-
-.sticker{
-  width:72px;
-  height:72px;
-  border-radius:22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#ffffff12;
-  font-size:32px;
-}
-
-.unlocked{
-  background:white;
-  color:#4a36c7;
-}
-
-.worlds{
-  display:flex;
-  gap:14px;
-  overflow:auto;
-}
-
-.world{
-  min-width:130px;
-  background:#ffffff10;
-  padding:18px;
-  border-radius:26px;
-}
-
-.world-icon{
-  font-size:44px;
-  margin-bottom:12px;
+  font-size:60px;
 }
 
 .hidden{

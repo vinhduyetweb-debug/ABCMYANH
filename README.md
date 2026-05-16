@@ -1,29 +1,24 @@
 
-# Wonder ABC Universe
+WONDER ABC UNIVERSE V2
 
-TikTok-style emotional micro-learning kids app.
+NEW FEATURES:
+- Real American English pronunciation
+- Speech Synthesis API
+- Auto pronunciation on lesson open
+- Interactive voice feedback
+- Better premium UI
+- Enhanced emotional experience
 
-## Features
-- Mobile-first UI
-- Emotional dopamine interactions
-- Sticker collection system
-- Reward particles
-- Learning adventure flow
-- Premium glassmorphism design
-- Lightweight deploy-ready structure
+IMPORTANT:
+For voice to work correctly:
+- Open app in Chrome or Edge
+- Allow browser audio
+- Internet may be required for some voices
+- Mobile browsers support en-US voices differently
 
-## Deploy
-Upload all files to:
+DEPLOY:
 - Vercel
 - Netlify
 - GitHub Pages
-- Firebase Hosting
 
-No backend required.
-
-## Future Upgrades
-- AI story engine
-- Pet evolution system
-- Dynamic worlds
-- Voice narration
-- Offline PWA support
+NO BACKEND REQUIRED

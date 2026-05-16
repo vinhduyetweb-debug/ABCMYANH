@@ -1,132 +1,112 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wonder ABC Universe</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wonder ABC Universe V2</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <div class="background-glow"></div>
 
-    <header class="topbar">
-      <div class="brand">
-        <span class="logo">🌈</span>
-        <div>
-          <h1>Wonder ABC</h1>
-          <p>Micro-learning AI-first kids world</p>
-        </div>
+<div class="app">
+
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🌈</div>
+
+      <div>
+        <h1>Wonder ABC</h1>
+        <p>American English Adventure</p>
       </div>
+    </div>
 
-      <div class="coins">
-        ✨ <span id="stars">0</span>
+    <div class="score">
+      ✨ <span id="score">0</span>
+    </div>
+  </header>
+
+  <section class="hero-card">
+    <div>
+      <div class="pill">TODAY'S QUEST</div>
+
+      <h2>Help Luna Bunny Find The Letter A</h2>
+
+      <p>
+        Learn American English pronunciation with magical interactive adventures.
+      </p>
+
+      <button id="startBtn" class="primary-btn">
+        Start Adventure 🚀
+      </button>
+    </div>
+
+    <div class="mascot floating">
+      🐰
+    </div>
+  </section>
+
+  <section id="lessonCard" class="lesson-card hidden">
+
+    <div class="lesson-top">
+      <span class="mini-pill">APPLE FOREST</span>
+      <span class="mini-pill">AMERICAN ENGLISH</span>
+    </div>
+
+    <div class="letter-box pulse">
+      <h1 id="letter">A</h1>
+      <h3 id="word">Apple 🍎</h3>
+      <p class="phonetic">/ˈæp.əl/</p>
+    </div>
+
+    <div class="buttons">
+      <button id="speakLetterBtn" class="secondary-btn">
+        🔊 Pronounce Letter
+      </button>
+
+      <button id="speakWordBtn" class="secondary-btn">
+        🇺🇸 Pronounce Word
+      </button>
+    </div>
+
+    <div class="quiz">
+      <h3>Which one is Apple?</h3>
+
+      <div class="choices">
+        <button class="choice">🐠</button>
+        <button class="choice correct">🍎</button>
+        <button class="choice">🚗</button>
       </div>
-    </header>
+    </div>
 
-    <main class="screen">
-      <section class="hero-card">
-        <div class="hero-text">
-          <span class="tag">TODAY'S ADVENTURE</span>
-          <h2>The Bunny Lost The Letter A!</h2>
-          <p>
-            Help Luna Bunny find the magical apple hidden inside Apple Forest.
-          </p>
+  </section>
 
-          <button id="startBtn" class="primary-btn">
-            Start Adventure 🚀
-          </button>
-        </div>
+  <section id="rewardCard" class="reward-card hidden">
 
-        <div class="hero-character floating">
-          🐰
-        </div>
-      </section>
+    <div class="reward-icon bounce">🎉</div>
 
-      <section class="lesson-card hidden" id="lessonCard">
-        <div class="lesson-top">
-          <span class="world-pill">APPLE FOREST</span>
-          <span class="level-pill">LEVEL 1</span>
-        </div>
+    <h2>Amazing Job!</h2>
 
-        <div class="letter-area pulse">
-          <h1>A</h1>
-          <p>Apple 🍎</p>
-        </div>
+    <p>
+      Luna Bunny is super happy because you pronounced the word correctly!
+    </p>
 
-        <button id="soundBtn" class="secondary-btn">
-          🔊 Hear Sound
-        </button>
+    <div class="pet-box">
+      <div class="pet">🐣</div>
 
-        <div class="quiz">
-          <h3>Which one is the apple?</h3>
+      <div>
+        <h4>Your Pet Is Growing!</h4>
+        <p>Come back every day to unlock magical evolutions.</p>
+      </div>
+    </div>
 
-          <div class="choices">
-            <button class="choice">🚗</button>
-            <button class="choice correct">🍎</button>
-            <button class="choice">🐠</button>
-          </div>
-        </div>
-      </section>
+  </section>
 
-      <section class="reward-card hidden" id="rewardCard">
-        <div class="reward-emoji bounce">🎉</div>
-        <h2>Great Job!</h2>
-        <p>You helped Luna Bunny find the magical apple!</p>
+</div>
 
-        <div class="pet-card">
-          <div class="pet">🐣</div>
-          <div>
-            <h4>Your Pet Grew Happier!</h4>
-            <p>Feed and learn every day to evolve your friend.</p>
-          </div>
-        </div>
-
-        <button id="continueBtn" class="primary-btn">
-          Continue Journey 🌈
-        </button>
-      </section>
-
-      <section class="collection-card">
-        <div class="section-title">
-          <h3>Sticker Collection</h3>
-          <span>Collect magical memories ✨</span>
-        </div>
-
-        <div class="stickers">
-          <div class="sticker unlocked">🍎</div>
-          <div class="sticker">🔒</div>
-          <div class="sticker">🔒</div>
-          <div class="sticker">🔒</div>
-        </div>
-      </section>
-
-      <section class="worlds-card">
-        <div class="section-title">
-          <h3>Adventure Worlds</h3>
-          <span>Swipe-ready emotional worlds</span>
-        </div>
-
-        <div class="worlds">
-          <div class="world">
-            <div class="world-icon">🍎</div>
-            <h4>Apple Forest</h4>
-          </div>
-
-          <div class="world">
-            <div class="world-icon">🌙</div>
-            <h4>Moon Letters</h4>
-          </div>
-
-          <div class="world">
-            <div class="world-icon">🌊</div>
-            <h4>Ocean Sounds</h4>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

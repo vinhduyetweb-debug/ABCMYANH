@@ -2,27 +2,90 @@
 const startBtn = document.getElementById('startBtn');
 const lessonCard = document.getElementById('lessonCard');
 const rewardCard = document.getElementById('rewardCard');
-const continueBtn = document.getElementById('continueBtn');
-const stars = document.getElementById('stars');
+const scoreText = document.getElementById('score');
+
+const speakLetterBtn = document.getElementById('speakLetterBtn');
+const speakWordBtn = document.getElementById('speakWordBtn');
 
 let score = 0;
 
+const lesson = {
+  letter: 'A',
+  word: 'Apple'
+};
+
 startBtn.addEventListener('click', () => {
   lessonCard.classList.remove('hidden');
-  window.scrollTo({
-    top: lessonCard.offsetTop - 20,
-    behavior: 'smooth'
+
+  lessonCard.scrollIntoView({
+    behavior:'smooth'
   });
+
+  setTimeout(() => {
+    speakAmerican(lesson.letter);
+  }, 500);
+});
+
+function speakAmerican(text){
+
+  if(!('speechSynthesis' in window)){
+    alert('Speech synthesis is not supported on this browser.');
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  utterance.lang = 'en-US';
+  utterance.rate = 0.82;
+  utterance.pitch = 1.05;
+  utterance.volume = 1;
+
+  const voices = window.speechSynthesis.getVoices();
+
+  const americanVoice =
+    voices.find(v =>
+      v.lang === 'en-US' &&
+      (
+        v.name.includes('Google') ||
+        v.name.includes('Samantha') ||
+        v.name.includes('Jenny') ||
+        v.name.includes('Aria')
+      )
+    ) || voices.find(v => v.lang === 'en-US');
+
+  if(americanVoice){
+    utterance.voice = americanVoice;
+  }
+
+  window.speechSynthesis.speak(utterance);
+}
+
+speechSynthesis.onvoiceschanged = () => {
+  speechSynthesis.getVoices();
+};
+
+speakLetterBtn.addEventListener('click', () => {
+  speakAmerican('A');
+});
+
+speakWordBtn.addEventListener('click', () => {
+  speakAmerican('Apple');
 });
 
 document.querySelectorAll('.choice').forEach(choice => {
+
   choice.addEventListener('click', () => {
 
     if(choice.classList.contains('correct')){
-      score += 10;
-      stars.innerText = score;
 
-      launchParticles();
+      score += 10;
+      scoreText.innerText = score;
+
+      launchMagic();
+
+      speakAmerican('Amazing! Apple!');
 
       setTimeout(() => {
         rewardCard.classList.remove('hidden');
@@ -30,44 +93,53 @@ document.querySelectorAll('.choice').forEach(choice => {
         rewardCard.scrollIntoView({
           behavior:'smooth'
         });
-      }, 600);
+      }, 700);
 
     } else {
-      choice.style.transform = 'scale(.9)';
-      setTimeout(() => {
-        choice.style.transform = '';
-      },200);
+
+      choice.animate([
+        { transform:'translateX(0)' },
+        { transform:'translateX(-6px)' },
+        { transform:'translateX(6px)' },
+        { transform:'translateX(0)' }
+      ],{
+        duration:250
+      });
+
+      speakAmerican('Try again');
     }
+
   });
+
 });
 
-continueBtn.addEventListener('click', () => {
-  alert('Next World Coming Soon 🚀');
-});
+function launchMagic(){
 
-function launchParticles(){
-  for(let i=0;i<18;i++){
-    const p = document.createElement('div');
+  for(let i=0;i<24;i++){
 
-    p.innerHTML = ['✨','🌈','⭐','💖'][Math.floor(Math.random()*4)];
+    const spark = document.createElement('div');
 
-    p.style.position='fixed';
-    p.style.left=Math.random()*window.innerWidth+'px';
-    p.style.top='50%';
-    p.style.fontSize='28px';
-    p.style.zIndex='999';
-    p.style.pointerEvents='none';
-    p.style.transition='1s ease-out';
+    spark.innerHTML = ['✨','🌈','⭐','💖'][Math.floor(Math.random()*4)];
 
-    document.body.appendChild(p);
+    spark.style.position='fixed';
+    spark.style.left=Math.random()*window.innerWidth+'px';
+    spark.style.top='55%';
+    spark.style.fontSize='30px';
+    spark.style.zIndex='9999';
+    spark.style.transition='1.2s ease-out';
+    spark.style.pointerEvents='none';
+
+    document.body.appendChild(spark);
 
     setTimeout(()=>{
-      p.style.transform=`translateY(-${Math.random()*300}px)`;
-      p.style.opacity='0';
+      spark.style.transform=`translateY(-${Math.random()*400}px) rotate(${Math.random()*360}deg)`;
+      spark.style.opacity='0';
     },10);
 
     setTimeout(()=>{
-      p.remove();
-    },1200);
+      spark.remove();
+    },1400);
+
   }
+
 }
