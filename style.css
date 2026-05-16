@@ -10,7 +10,8 @@ body{
 background:
 radial-gradient(circle at top left,#ffc4dc,transparent 30%),
 radial-gradient(circle at bottom right,#8de7ff,transparent 30%),
-linear-gradient(180deg,#6f5cff,#2d2169);
+linear-gradient(180deg,#705dff,#2c2168);
+
 min-height:100vh;
 overflow-x:hidden;
 color:white;
@@ -55,25 +56,25 @@ backdrop-filter:blur(20px);
 border-radius:34px;
 padding:24px;
 margin-bottom:20px;
-border:1px solid #ffffff24;
+border:1px solid #ffffff22;
 box-shadow:0 10px 40px rgba(0,0,0,.22);
 }
 
 .hero{
 display:flex;
-align-items:center;
 gap:18px;
+align-items:center;
 }
 
-.heroMascot{
+.mascot{
 font-size:110px;
 }
 
 .tag{
 display:inline-block;
 padding:8px 14px;
-background:#ffffff22;
 border-radius:999px;
+background:#ffffff22;
 font-size:11px;
 margin-bottom:14px;
 }
@@ -102,27 +103,27 @@ width:100%;
 padding:18px;
 border-radius:24px;
 background:white;
-color:#5a45dd;
+color:#5641e0;
 font-size:18px;
 }
 
 .worldTag{
-background:#ffffff22;
+display:inline-block;
 padding:10px 14px;
 border-radius:999px;
-display:inline-block;
+background:#ffffff22;
 font-size:12px;
 margin-bottom:20px;
 }
 
-.mascotBox{
-background:#ffffff12;
+.lessonBox{
+background:#ffffff10;
 border-radius:28px;
 padding:30px;
 text-align:center;
 }
 
-.bigMascot{
+.emoji{
 font-size:90px;
 }
 
@@ -137,12 +138,20 @@ margin-top:10px;
 }
 
 .meaning{
-margin-top:10px;
-font-size:18px;
-opacity:.9;
+font-size:22px;
+margin-top:12px;
+font-weight:700;
 }
 
-.buttons,.nav{
+.sentence{
+margin-top:14px;
+font-size:18px;
+opacity:.92;
+line-height:1.5;
+}
+
+.buttons,
+.nav{
 display:flex;
 gap:10px;
 margin-top:20px;
@@ -163,14 +172,14 @@ justify-content:space-around;
 }
 
 .sticker{
-font-size:44px;
-background:#ffffff12;
 width:70px;
 height:70px;
 display:flex;
 align-items:center;
 justify-content:center;
 border-radius:22px;
+background:#ffffff12;
+font-size:44px;
 }
 
 .hidden{
@@ -185,14 +194,14 @@ animation:float 3s ease-in-out infinite;
 animation:pulse 2s infinite;
 }
 
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-100%{transform:translateY(0)}
-}
+@keyframes float{{
+0%{{transform:translateY(0)}}
+50%{{transform:translateY(-12px)}}
+100%{{transform:translateY(0)}}
+}}
 
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.03)}
-100%{transform:scale(1)}
-}
+@keyframes pulse{{
+0%{{transform:scale(1)}}
+50%{{transform:scale(1.03)}}
+100%{{transform:scale(1)}}
+}}

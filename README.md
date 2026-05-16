@@ -1,1 +1,1 @@
-Wonder ABC Universe V7 Full Chibi Edition
+Wonder ABC Universe V8 - Real Educational Edition
