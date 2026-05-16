@@ -1,21 +1,29 @@
 
-# ABC Adventure V6
+# Wonder ABC Universe
 
-Living Emotional Toy Universe
+TikTok-style emotional micro-learning kids app.
 
-Features:
-- Interactive toy engine
-- Curiosity loop
-- Mystery egg
-- Story micro learning
-- Silhouette learning
-- Flash cognition mode
-- Emotional mascot
-- Procedural audio
-- Pet interaction
-- British English voice
-- Offline-first
-- Mobile-first
+## Features
+- Mobile-first UI
+- Emotional dopamine interactions
+- Sticker collection system
+- Reward particles
+- Learning adventure flow
+- Premium glassmorphism design
+- Lightweight deploy-ready structure
 
-Deploy:
-Upload directly to Vercel or Netlify.
+## Deploy
+Upload all files to:
+- Vercel
+- Netlify
+- GitHub Pages
+- Firebase Hosting
+
+No backend required.
+
+## Future Upgrades
+- AI story engine
+- Pet evolution system
+- Dynamic worlds
+- Voice narration
+- Offline PWA support

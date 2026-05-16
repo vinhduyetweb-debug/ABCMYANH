@@ -1,120 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABC Adventure V6</title>
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wonder ABC Universe</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="app">
+    <div class="background-glow"></div>
 
-<div class="floating-bg"></div>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">🌈</span>
+        <div>
+          <h1>Wonder ABC</h1>
+          <p>Micro-learning AI-first kids world</p>
+        </div>
+      </div>
 
-<div class="app">
+      <div class="coins">
+        ✨ <span id="stars">0</span>
+      </div>
+    </header>
 
-<header class="topbar">
-<div>
-<h1>ABC Adventure V6</h1>
-<p>Living Emotional Toy Universe</p>
-</div>
+    <main class="screen">
+      <section class="hero-card">
+        <div class="hero-text">
+          <span class="tag">TODAY'S ADVENTURE</span>
+          <h2>The Bunny Lost The Letter A!</h2>
+          <p>
+            Help Luna Bunny find the magical apple hidden inside Apple Forest.
+          </p>
 
-<div class="hud">
-<div class="hud-box">⭐ <span id="xp">0</span></div>
-<div class="hud-box">🏆 <span id="level">1</span></div>
-<div class="hud-box">🔥 <span id="combo">0</span></div>
-</div>
-</header>
+          <button id="startBtn" class="primary-btn">
+            Start Adventure 🚀
+          </button>
+        </div>
 
-<section class="story-card">
-<div class="mascot" id="mascot">🐰</div>
+        <div class="hero-character floating">
+          🐰
+        </div>
+      </section>
 
-<div class="story-content">
-<h2 id="storyTitle">Rabbit Lost The Apple 🍎</h2>
-<p id="storyText">Can you help Rabbit find the correct item?</p>
-</div>
-</section>
+      <section class="lesson-card hidden" id="lessonCard">
+        <div class="lesson-top">
+          <span class="world-pill">APPLE FOREST</span>
+          <span class="level-pill">LEVEL 1</span>
+        </div>
 
-<section class="mystery-card">
-<div class="mystery-egg" id="mysteryEgg">🥚</div>
+        <div class="letter-area pulse">
+          <h1>A</h1>
+          <p>Apple 🍎</p>
+        </div>
 
-<p>Tap the mystery egg after correct answers!</p>
-</section>
+        <button id="soundBtn" class="secondary-btn">
+          🔊 Hear Sound
+        </button>
 
-<section class="lesson-card">
+        <div class="quiz">
+          <h3>Which one is the apple?</h3>
 
-<div class="phonics">Phonics: <span id="phonics">Ah</span></div>
+          <div class="choices">
+            <button class="choice">🚗</button>
+            <button class="choice correct">🍎</button>
+            <button class="choice">🐠</button>
+          </div>
+        </div>
+      </section>
 
-<div class="letter" id="letter">A</div>
+      <section class="reward-card hidden" id="rewardCard">
+        <div class="reward-emoji bounce">🎉</div>
+        <h2>Great Job!</h2>
+        <p>You helped Luna Bunny find the magical apple!</p>
 
-<div class="word" id="word">Apple 🍎</div>
+        <div class="pet-card">
+          <div class="pet">🐣</div>
+          <div>
+            <h4>Your Pet Grew Happier!</h4>
+            <p>Feed and learn every day to evolve your friend.</p>
+          </div>
+        </div>
 
-<button class="voice-btn" id="voiceBtn">
-🔊 British Voice
-</button>
+        <button id="continueBtn" class="primary-btn">
+          Continue Journey 🌈
+        </button>
+      </section>
 
-</section>
+      <section class="collection-card">
+        <div class="section-title">
+          <h3>Sticker Collection</h3>
+          <span>Collect magical memories ✨</span>
+        </div>
 
-<section class="quiz-card">
+        <div class="stickers">
+          <div class="sticker unlocked">🍎</div>
+          <div class="sticker">🔒</div>
+          <div class="sticker">🔒</div>
+          <div class="sticker">🔒</div>
+        </div>
+      </section>
 
-<h2>Choose The Correct Item</h2>
+      <section class="worlds-card">
+        <div class="section-title">
+          <h3>Adventure Worlds</h3>
+          <span>Swipe-ready emotional worlds</span>
+        </div>
 
-<div class="choices" id="choices"></div>
+        <div class="worlds">
+          <div class="world">
+            <div class="world-icon">🍎</div>
+            <h4>Apple Forest</h4>
+          </div>
 
-<div class="feedback" id="feedback"></div>
+          <div class="world">
+            <div class="world-icon">🌙</div>
+            <h4>Moon Letters</h4>
+          </div>
 
-</section>
+          <div class="world">
+            <div class="world-icon">🌊</div>
+            <h4>Ocean Sounds</h4>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
-<section class="silhouette-card">
-
-<h2>🌑 Shadow Guess Game</h2>
-
-<div class="shadow-box" id="shadowBox">🐱</div>
-
-<div class="shadow-choices" id="shadowChoices"></div>
-
-<div class="shadow-feedback" id="shadowFeedback"></div>
-
-</section>
-
-<section class="flash-card">
-
-<h2>⚡ Flash Card Challenge</h2>
-
-<div class="flash-display" id="flashDisplay">🍎</div>
-
-<button class="flash-btn" id="flashBtn">
-Start Flash Mode
-</button>
-
-</section>
-
-<section class="pet-card">
-
-<div class="pet" id="pet">🐱</div>
-
-<div class="pet-message" id="petMessage">
-Your pet missed you!
-</div>
-
-<button class="feed-btn" id="feedBtn">
-🍪 Feed Pet
-</button>
-
-</section>
-
-<section class="collection-card">
-
-<h2>🎁 Sticker Collection</h2>
-
-<div class="stickers" id="stickers"></div>
-
-</section>
-
-</div>
-
-<div id="fxLayer"></div>
-
-<script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
