@@ -48,8 +48,7 @@ backdrop-filter:blur(12px);
 font-weight:900;
 }
 
-.modeCard,
-.lessonCard{
+.card{
 background:#ffffff18;
 backdrop-filter:blur(20px);
 border-radius:34px;
@@ -59,16 +58,11 @@ box-shadow:0 10px 40px rgba(0,0,0,.22);
 margin-bottom:20px;
 }
 
-.modeCard h2{
-font-size:30px;
-text-align:center;
-margin-bottom:24px;
-}
-
 .modeButtons{
 display:flex;
 flex-direction:column;
 gap:16px;
+margin-top:24px;
 }
 
 .modeBtn{
@@ -114,14 +108,21 @@ margin-top:10px;
 
 .meaning{
 margin-top:12px;
-font-size:22px;
-font-weight:700;
+font-size:24px;
+font-weight:800;
 }
 
 .sentence{
 margin-top:14px;
 font-size:18px;
 line-height:1.5;
+}
+
+.visualCount{
+margin-top:18px;
+font-size:34px;
+line-height:1.6;
+word-break:break-word;
 }
 
 .buttons,
