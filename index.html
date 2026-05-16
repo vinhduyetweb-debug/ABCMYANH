@@ -4,39 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wonder ABC Universe V2</title>
+  <title>Wonder ABC Universe V3</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app">
 
-  <div class="ambient ambient-1"></div>
-  <div class="ambient ambient-2"></div>
-
   <header class="topbar">
+
     <div class="brand">
       <div class="logo">🌈</div>
 
       <div>
         <h1>Wonder ABC</h1>
-        <p>American English Adventure</p>
+        <p>American English + Tiếng Việt</p>
       </div>
     </div>
 
-    <div class="score">
+    <div class="score-box">
       ✨ <span id="score">0</span>
     </div>
+
   </header>
 
   <section class="hero-card">
-    <div>
-      <div class="pill">TODAY'S QUEST</div>
 
-      <h2>Help Luna Bunny Find The Letter A</h2>
+    <div>
+      <div class="pill">MAGICAL LEARNING WORLD</div>
+
+      <h2>Learn English With Luna Bunny</h2>
 
       <p>
-        Learn American English pronunciation with magical interactive adventures.
+        Tap, listen, play, and explore emotional micro-learning adventures.
       </p>
 
       <button id="startBtn" class="primary-btn">
@@ -44,69 +44,82 @@
       </button>
     </div>
 
-    <div class="mascot floating">
+    <div class="hero-character floating">
       🐰
     </div>
+
   </section>
 
   <section id="lessonCard" class="lesson-card hidden">
 
     <div class="lesson-top">
-      <span class="mini-pill">APPLE FOREST</span>
-      <span class="mini-pill">AMERICAN ENGLISH</span>
+      <span class="mini-pill">MICRO LEARNING</span>
+      <span class="mini-pill">AI FIRST</span>
     </div>
 
     <div class="letter-box pulse">
-      <h1 id="letter">A</h1>
-      <h3 id="word">Apple 🍎</h3>
-      <p class="phonetic">/ˈæp.əl/</p>
+
+      <h1 id="letter"></h1>
+
+      <h3 id="word"></h3>
+
+      <p class="phonetic" id="phonetic"></p>
+
+      <p class="meaning" id="meaning"></p>
+
     </div>
 
     <div class="buttons">
-      <button id="speakLetterBtn" class="secondary-btn">
-        🔊 Pronounce Letter
+
+      <button id="speakEnglishBtn" class="secondary-btn">
+        🇺🇸 English
       </button>
 
-      <button id="speakWordBtn" class="secondary-btn">
-        🇺🇸 Pronounce Word
+      <button id="speakVietnameseBtn" class="secondary-btn">
+        🇻🇳 TiengViet
       </button>
+
     </div>
 
     <div class="quiz">
-      <h3>Which one is Apple?</h3>
 
-      <div class="choices">
-        <button class="choice">🐠</button>
-        <button class="choice correct">🍎</button>
-        <button class="choice">🚗</button>
-      </div>
+      <h3 id="quizTitle"></h3>
+
+      <div class="choices" id="choices"></div>
+
+    </div>
+
+    <div class="nav-buttons">
+
+      <button id="prevBtn" class="nav-btn">
+        ⬅ Back
+      </button>
+
+      <button id="nextBtn" class="nav-btn">
+        Next ➡
+      </button>
+
     </div>
 
   </section>
 
   <section id="rewardCard" class="reward-card hidden">
 
-    <div class="reward-icon bounce">🎉</div>
+    <div class="reward-icon bounce">
+      🎉
+    </div>
 
-    <h2>Amazing Job!</h2>
+    <h2>Wonderful!</h2>
 
     <p>
-      Luna Bunny is super happy because you pronounced the word correctly!
+      Luna Bunny is proud of you!
     </p>
-
-    <div class="pet-box">
-      <div class="pet">🐣</div>
-
-      <div>
-        <h4>Your Pet Is Growing!</h4>
-        <p>Come back every day to unlock magical evolutions.</p>
-      </div>
-    </div>
 
   </section>
 
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>

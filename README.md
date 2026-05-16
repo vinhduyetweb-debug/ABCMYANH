@@ -1,24 +1,18 @@
 
-WONDER ABC UNIVERSE V2
+WONDER ABC UNIVERSE V3
 
 NEW FEATURES:
-- Real American English pronunciation
-- Speech Synthesis API
-- Auto pronunciation on lesson open
-- Interactive voice feedback
-- Better premium UI
-- Enhanced emotional experience
+- English pronunciation
+- Vietnamese pronunciation
+- Next / Previous lessons
+- Multiple lessons
+- Correct answer applause sound
+- Enhanced magical effects
+- Better emotional interaction
 
-IMPORTANT:
-For voice to work correctly:
-- Open app in Chrome or Edge
-- Allow browser audio
-- Internet may be required for some voices
-- Mobile browsers support en-US voices differently
+BEST EXPERIENCE:
+- Chrome
+- Edge
+- Android Chrome
 
-DEPLOY:
-- Vercel
-- Netlify
-- GitHub Pages
-
-NO BACKEND REQUIRED
+DEPLOY READY

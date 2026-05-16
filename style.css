@@ -8,75 +8,52 @@
 
 body{
   background:
-    radial-gradient(circle at top left,#ffbfd6,transparent 30%),
-    radial-gradient(circle at bottom right,#9ce6ff,transparent 30%),
-    linear-gradient(180deg,#5e4cff,#271b63);
+    radial-gradient(circle at top left,#ffbdd4,transparent 30%),
+    radial-gradient(circle at bottom right,#8ee3ff,transparent 30%),
+    linear-gradient(180deg,#6653ff,#2b1c67);
   min-height:100vh;
-  overflow-x:hidden;
   color:white;
+  overflow-x:hidden;
 }
 
 .app{
   max-width:480px;
   margin:auto;
   padding:20px;
-  position:relative;
-}
-
-.ambient{
-  position:fixed;
-  width:300px;
-  height:300px;
-  border-radius:50%;
-  filter:blur(90px);
-  opacity:.35;
-  z-index:-1;
-}
-
-.ambient-1{
-  background:#ff89c8;
-  top:-100px;
-  left:-100px;
-}
-
-.ambient-2{
-  background:#7fdfff;
-  bottom:-100px;
-  right:-100px;
 }
 
 .topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:24px;
+  margin-bottom:22px;
 }
 
 .brand{
   display:flex;
-  align-items:center;
   gap:14px;
+  align-items:center;
 }
 
 .logo{
-  font-size:44px;
+  font-size:42px;
 }
 
 .brand h1{
-  font-size:26px;
+  font-size:24px;
   font-weight:900;
 }
 
 .brand p{
+  opacity:.7;
   font-size:12px;
-  opacity:.75;
 }
 
-.score{
-  background:#ffffff1f;
-  backdrop-filter:blur(14px);
+.score-box{
+  background:#ffffff1c;
   padding:14px 18px;
   border-radius:999px;
+  backdrop-filter:blur(10px);
   font-weight:800;
 }
 
@@ -84,12 +61,12 @@ body{
 .lesson-card,
 .reward-card{
   background:#ffffff18;
-  border:1px solid #ffffff22;
   backdrop-filter:blur(20px);
+  border:1px solid #ffffff24;
   border-radius:34px;
   padding:24px;
   margin-bottom:20px;
-  box-shadow:0 12px 40px rgba(0,0,0,.22);
+  box-shadow:0 10px 40px rgba(0,0,0,.2);
 }
 
 .hero-card{
@@ -98,33 +75,33 @@ body{
   gap:14px;
 }
 
-.pill{
-  display:inline-block;
-  padding:8px 14px;
-  border-radius:999px;
-  background:#ffffff20;
-  font-size:11px;
-  margin-bottom:16px;
-}
-
 .hero-card h2{
   font-size:34px;
   line-height:1.1;
-  margin-bottom:14px;
+  margin:14px 0;
 }
 
 .hero-card p{
-  opacity:.88;
+  opacity:.85;
   line-height:1.6;
   margin-bottom:18px;
 }
 
-.mascot{
-  font-size:92px;
+.hero-character{
+  font-size:90px;
+}
+
+.pill{
+  display:inline-block;
+  background:#ffffff18;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:11px;
 }
 
 .primary-btn,
 .secondary-btn,
+.nav-btn,
 .choice{
   border:none;
   cursor:pointer;
@@ -133,27 +110,21 @@ body{
 
 .primary-btn{
   width:100%;
-  background:white;
-  color:#4631d4;
   padding:18px;
   border-radius:24px;
+  background:white;
+  color:#4d39d7;
   font-size:18px;
   font-weight:900;
 }
 
 .secondary-btn{
   flex:1;
-  background:#ffffff18;
-  color:white;
   padding:16px;
   border-radius:20px;
+  background:#ffffff18;
+  color:white;
   font-weight:700;
-}
-
-.buttons{
-  display:flex;
-  gap:12px;
-  margin-top:18px;
 }
 
 .lesson-top{
@@ -170,10 +141,10 @@ body{
 }
 
 .letter-box{
-  text-align:center;
   background:#ffffff12;
   border-radius:28px;
   padding:30px;
+  text-align:center;
 }
 
 .letter-box h1{
@@ -181,7 +152,7 @@ body{
 }
 
 .letter-box h3{
-  font-size:30px;
+  font-size:28px;
   margin-top:8px;
 }
 
@@ -191,8 +162,19 @@ body{
   font-size:18px;
 }
 
+.meaning{
+  margin-top:10px;
+  font-size:18px;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+}
+
 .quiz{
-  margin-top:28px;
+  margin-top:26px;
 }
 
 .quiz h3{
@@ -206,15 +188,30 @@ body{
 
 .choice{
   flex:1;
-  background:#ffffff14;
-  color:white;
+  background:#ffffff12;
   padding:26px 0;
   border-radius:24px;
-  font-size:42px;
+  font-size:40px;
+  color:white;
 }
 
 .choice:hover{
   transform:scale(1.05);
+}
+
+.nav-buttons{
+  display:flex;
+  gap:12px;
+  margin-top:24px;
+}
+
+.nav-btn{
+  flex:1;
+  padding:16px;
+  border-radius:20px;
+  background:#ffffff18;
+  color:white;
+  font-weight:700;
 }
 
 .reward-card{
@@ -223,20 +220,6 @@ body{
 
 .reward-icon{
   font-size:90px;
-}
-
-.pet-box{
-  margin-top:24px;
-  background:#ffffff12;
-  border-radius:28px;
-  padding:18px;
-  display:flex;
-  gap:14px;
-  align-items:center;
-}
-
-.pet{
-  font-size:60px;
 }
 
 .hidden{

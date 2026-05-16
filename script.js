@@ -1,37 +1,122 @@
 
-const startBtn = document.getElementById('startBtn');
-const lessonCard = document.getElementById('lessonCard');
-const rewardCard = document.getElementById('rewardCard');
-const scoreText = document.getElementById('score');
+const lessons = [
+  {
+    letter:'A',
+    word:'Apple 🍎',
+    plainWord:'Apple',
+    meaning:'Quả táo',
+    phonetic:'/ˈæp.əl/',
+    correct:'🍎',
+    choices:['🐠','🍎','🚗']
+  },
+  {
+    letter:'B',
+    word:'Balloon 🎈',
+    plainWord:'Balloon',
+    meaning:'Bóng bay',
+    phonetic:'/bəˈluːn/',
+    correct:'🎈',
+    choices:['🎈','🐶','🍔']
+  },
+  {
+    letter:'C',
+    word:'Cat 🐱',
+    plainWord:'Cat',
+    meaning:'Con mèo',
+    phonetic:'/kæt/',
+    correct:'🐱',
+    choices:['🚀','🐱','🌈']
+  }
+];
 
-const speakLetterBtn = document.getElementById('speakLetterBtn');
-const speakWordBtn = document.getElementById('speakWordBtn');
-
+let current = 0;
 let score = 0;
 
-const lesson = {
-  letter: 'A',
-  word: 'Apple'
-};
+const lessonCard = document.getElementById('lessonCard');
+const rewardCard = document.getElementById('rewardCard');
 
-startBtn.addEventListener('click', () => {
+const letter = document.getElementById('letter');
+const word = document.getElementById('word');
+const meaning = document.getElementById('meaning');
+const phonetic = document.getElementById('phonetic');
+
+const quizTitle = document.getElementById('quizTitle');
+const choices = document.getElementById('choices');
+
+const scoreText = document.getElementById('score');
+
+document.getElementById('startBtn').addEventListener('click', () => {
+
   lessonCard.classList.remove('hidden');
+
+  renderLesson();
 
   lessonCard.scrollIntoView({
     behavior:'smooth'
   });
 
-  setTimeout(() => {
-    speakAmerican(lesson.letter);
-  }, 500);
 });
 
-function speakAmerican(text){
+function renderLesson(){
 
-  if(!('speechSynthesis' in window)){
-    alert('Speech synthesis is not supported on this browser.');
-    return;
-  }
+  const lesson = lessons[current];
+
+  letter.innerText = lesson.letter;
+  word.innerText = lesson.word;
+  meaning.innerText = lesson.meaning;
+  phonetic.innerText = lesson.phonetic;
+
+  quizTitle.innerText = `Which one is ${lesson.plainWord}?`;
+
+  choices.innerHTML = '';
+
+  lesson.choices.forEach(item => {
+
+    const btn = document.createElement('button');
+
+    btn.className = 'choice';
+    btn.innerText = item;
+
+    btn.addEventListener('click', () => {
+
+      if(item === lesson.correct){
+
+        score += 10;
+
+        scoreText.innerText = score;
+
+        clapEffect();
+
+        launchMagic();
+
+        speakEnglish(`Amazing! ${lesson.plainWord}`);
+
+        rewardCard.classList.remove('hidden');
+
+      } else {
+
+        speakEnglish('Try again');
+
+        btn.animate([
+          { transform:'translateX(0)' },
+          { transform:'translateX(-6px)' },
+          { transform:'translateX(6px)' },
+          { transform:'translateX(0)' }
+        ],{
+          duration:250
+        });
+
+      }
+
+    });
+
+    choices.appendChild(btn);
+
+  });
+
+}
+
+function speakEnglish(text){
 
   window.speechSynthesis.cancel();
 
@@ -40,82 +125,92 @@ function speakAmerican(text){
   utterance.lang = 'en-US';
   utterance.rate = 0.82;
   utterance.pitch = 1.05;
-  utterance.volume = 1;
 
-  const voices = window.speechSynthesis.getVoices();
+  const voices = speechSynthesis.getVoices();
 
-  const americanVoice =
-    voices.find(v =>
-      v.lang === 'en-US' &&
-      (
-        v.name.includes('Google') ||
-        v.name.includes('Samantha') ||
-        v.name.includes('Jenny') ||
-        v.name.includes('Aria')
-      )
-    ) || voices.find(v => v.lang === 'en-US');
+  const voice = voices.find(v => v.lang === 'en-US');
 
-  if(americanVoice){
-    utterance.voice = americanVoice;
+  if(voice){
+    utterance.voice = voice;
   }
 
-  window.speechSynthesis.speak(utterance);
+  speechSynthesis.speak(utterance);
+
 }
 
-speechSynthesis.onvoiceschanged = () => {
-  speechSynthesis.getVoices();
-};
+function speakVietnamese(text){
 
-speakLetterBtn.addEventListener('click', () => {
-  speakAmerican('A');
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  utterance.lang = 'vi-VN';
+  utterance.rate = 0.9;
+  utterance.pitch = 1;
+
+  const voices = speechSynthesis.getVoices();
+
+  const voice = voices.find(v => v.lang === 'vi-VN');
+
+  if(voice){
+    utterance.voice = voice;
+  }
+
+  speechSynthesis.speak(utterance);
+
+}
+
+document.getElementById('speakEnglishBtn').addEventListener('click', () => {
+
+  const lesson = lessons[current];
+
+  speakEnglish(lesson.plainWord);
+
 });
 
-speakWordBtn.addEventListener('click', () => {
-  speakAmerican('Apple');
+document.getElementById('speakVietnameseBtn').addEventListener('click', () => {
+
+  const lesson = lessons[current];
+
+  speakVietnamese(lesson.meaning);
+
 });
 
-document.querySelectorAll('.choice').forEach(choice => {
+document.getElementById('nextBtn').addEventListener('click', () => {
 
-  choice.addEventListener('click', () => {
+  current++;
 
-    if(choice.classList.contains('correct')){
+  if(current >= lessons.length){
+    current = 0;
+  }
 
-      score += 10;
-      scoreText.innerText = score;
+  rewardCard.classList.add('hidden');
 
-      launchMagic();
+  renderLesson();
 
-      speakAmerican('Amazing! Apple!');
+  speakEnglish(lessons[current].plainWord);
 
-      setTimeout(() => {
-        rewardCard.classList.remove('hidden');
+});
 
-        rewardCard.scrollIntoView({
-          behavior:'smooth'
-        });
-      }, 700);
+document.getElementById('prevBtn').addEventListener('click', () => {
 
-    } else {
+  current--;
 
-      choice.animate([
-        { transform:'translateX(0)' },
-        { transform:'translateX(-6px)' },
-        { transform:'translateX(6px)' },
-        { transform:'translateX(0)' }
-      ],{
-        duration:250
-      });
+  if(current < 0){
+    current = lessons.length - 1;
+  }
 
-      speakAmerican('Try again');
-    }
+  rewardCard.classList.add('hidden');
 
-  });
+  renderLesson();
+
+  speakEnglish(lessons[current].plainWord);
 
 });
 
 function launchMagic(){
 
-  for(let i=0;i<24;i++){
+  for(let i=0;i<20;i++){
 
     const spark = document.createElement('div');
 
@@ -127,19 +222,28 @@ function launchMagic(){
     spark.style.fontSize='30px';
     spark.style.zIndex='9999';
     spark.style.transition='1.2s ease-out';
-    spark.style.pointerEvents='none';
 
     document.body.appendChild(spark);
 
     setTimeout(()=>{
-      spark.style.transform=`translateY(-${Math.random()*400}px) rotate(${Math.random()*360}deg)`;
+      spark.style.transform=`translateY(-${Math.random()*350}px)`;
       spark.style.opacity='0';
     },10);
 
     setTimeout(()=>{
       spark.remove();
-    },1400);
+    },1300);
 
   }
+
+}
+
+function clapEffect(){
+
+  const audio = new Audio('https://actions.google.com/sounds/v1/human_voices/applause.ogg');
+
+  audio.volume = 0.6;
+
+  audio.play();
 
 }
