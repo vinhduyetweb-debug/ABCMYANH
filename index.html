@@ -1,131 +1,128 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wonder ABC Universe V4</title>
+<title>Wonder ABC Chibi World</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <div class="app">
-
-<header class="topbar">
-
-<div class="brand">
-<div class="logo">🌈</div>
-
+<header>
+<div class="title">
+<div class="avatar">🐰</div>
 <div>
-<h1>Wonder ABC</h1>
-<p>American English + Vietnamese Voice</p>
+<h1>Wonder ABC Chibi World</h1>
+<p>26 Letters + 100 Numbers</p>
 </div>
 </div>
-
-<div class="score-box">
-✨ <span id="score">0</span>
-</div>
-
+<div class="score">✨ <span id="score">0</span></div>
 </header>
 
-<section class="hero-card">
-
-<div>
-<div class="pill">EMOTIONAL LEARNING WORLD</div>
-
-<h2>Play • Listen • Learn</h2>
-
-<p>
-Interactive TikTok-style micro learning experience for kids.
-</p>
-
-<button id="startBtn" class="primary-btn">
-Start Adventure 🚀
-</button>
-
+<div class="hero">
+<img class="chibi" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=800&auto=format&fit=crop" />
+<div class="heroText">
+<div class="tag">AI FIRST KIDS APP</div>
+<h2>Magical Chibi Learning Adventure</h2>
+<button id="startBtn">Start Adventure 🚀</button>
+</div>
 </div>
 
-<div class="hero-character floating">
-🐰
+<div id="lessonCard" class="card hidden">
+<div class="lessonImageWrap">
+<img class="lessonImage" id="lessonImage" src="">
 </div>
 
-</section>
-
-<section id="lessonCard" class="lesson-card hidden">
-
-<div class="lesson-top">
-<span class="mini-pill">AI FIRST</span>
-<span class="mini-pill">MICRO LEARNING</span>
-</div>
-
-<div class="letter-box pulse">
-
-<h1 id="letter"></h1>
-
-<h3 id="word"></h3>
-
-<p class="phonetic" id="phonetic"></p>
-
-<p class="meaning" id="meaning"></p>
-
-</div>
+<div class="letter" id="letter"></div>
+<div class="word" id="word"></div>
+<div class="meaning" id="meaning"></div>
+<div class="phonetic" id="phonetic"></div>
 
 <div class="buttons">
-
-<button id="letterBtn" class="secondary-btn">
-🔤 Letter
-</button>
-
-<button id="englishBtn" class="secondary-btn">
-🇺🇸 English
-</button>
-
-<button id="vietnameseBtn" class="secondary-btn">
-🇻🇳 TiengViet
-</button>
-
+<button id="letterBtn">🔤 Letter</button>
+<button id="englishBtn">🇺🇸 English</button>
+<button id="vietnameseBtn">🇻🇳 Tiếng Việt</button>
 </div>
 
-<div class="quiz">
-
-<h3 id="quizTitle"></h3>
-
-<div class="choices" id="choices"></div>
-
+<div class="nav">
+<button id="prevBtn">⬅ Back</button>
+<button id="nextBtn">Next ➡</button>
+</div>
+</div>
 </div>
 
-<div class="nav-buttons">
+<script>
+const lessons = [{"type": "letter", "letter": "A", "word": "Apple 🍎", "plainWord": "Apple", "meaning": "Quả táo", "phonetic": "/ˈæp.əl/", "correct": "🍎"}, {"type": "letter", "letter": "B", "word": "Balloon 🎈", "plainWord": "Balloon", "meaning": "Bóng bay", "phonetic": "/bəˈluːn/", "correct": "🎈"}, {"type": "letter", "letter": "C", "word": "Cat 🐱", "plainWord": "Cat", "meaning": "Con mèo", "phonetic": "/kæt/", "correct": "🐱"}, {"type": "letter", "letter": "D", "word": "Dog 🐶", "plainWord": "Dog", "meaning": "Con chó", "phonetic": "/dɔːɡ/", "correct": "🐶"}, {"type": "letter", "letter": "E", "word": "Egg 🥚", "plainWord": "Egg", "meaning": "Quả trứng", "phonetic": "/eɡ/", "correct": "🥚"}, {"type": "letter", "letter": "F", "word": "Fish 🐠", "plainWord": "Fish", "meaning": "Con cá", "phonetic": "/fɪʃ/", "correct": "🐠"}, {"type": "letter", "letter": "G", "word": "Grapes 🍇", "plainWord": "Grapes", "meaning": "Nho", "phonetic": "/ɡreɪps/", "correct": "🍇"}, {"type": "letter", "letter": "H", "word": "House 🏠", "plainWord": "House", "meaning": "Ngôi nhà", "phonetic": "/haʊs/", "correct": "🏠"}, {"type": "letter", "letter": "I", "word": "Ice Cream 🍦", "plainWord": "Ice", "meaning": "Kem", "phonetic": "/aɪs kriːm/", "correct": "🍦"}, {"type": "letter", "letter": "J", "word": "Juice 🧃", "plainWord": "Juice", "meaning": "Nước ép", "phonetic": "/dʒuːs/", "correct": "🧃"}, {"type": "letter", "letter": "K", "word": "Key 🔑", "plainWord": "Key", "meaning": "Chìa khóa", "phonetic": "/kiː/", "correct": "🔑"}, {"type": "letter", "letter": "L", "word": "Lion 🦁", "plainWord": "Lion", "meaning": "Sư tử", "phonetic": "/ˈlaɪ.ən/", "correct": "🦁"}, {"type": "letter", "letter": "M", "word": "Moon 🌙", "plainWord": "Moon", "meaning": "Mặt trăng", "phonetic": "/muːn/", "correct": "🌙"}, {"type": "letter", "letter": "N", "word": "Nest 🪺", "plainWord": "Nest", "meaning": "Tổ chim", "phonetic": "/nest/", "correct": "🪺"}, {"type": "letter", "letter": "O", "word": "Orange 🍊", "plainWord": "Orange", "meaning": "Cam", "phonetic": "/ˈɒr.ɪndʒ/", "correct": "🍊"}, {"type": "letter", "letter": "P", "word": "Panda 🐼", "plainWord": "Panda", "meaning": "Gấu trúc", "phonetic": "/ˈpæn.də/", "correct": "🐼"}, {"type": "letter", "letter": "Q", "word": "Queen 👑", "plainWord": "Queen", "meaning": "Nữ hoàng", "phonetic": "/kwiːn/", "correct": "👑"}, {"type": "letter", "letter": "R", "word": "Rainbow 🌈", "plainWord": "Rainbow", "meaning": "Cầu vồng", "phonetic": "/ˈreɪn.bəʊ/", "correct": "🌈"}, {"type": "letter", "letter": "S", "word": "Sun ☀️", "plainWord": "Sun", "meaning": "Mặt trời", "phonetic": "/sʌn/", "correct": "☀️"}, {"type": "letter", "letter": "T", "word": "Tiger 🐯", "plainWord": "Tiger", "meaning": "Hổ", "phonetic": "/ˈtaɪ.ɡər/", "correct": "🐯"}, {"type": "letter", "letter": "U", "word": "Umbrella ☂️", "plainWord": "Umbrella", "meaning": "Cái ô", "phonetic": "/ʌmˈbrel.ə/", "correct": "☂️"}, {"type": "letter", "letter": "V", "word": "Violin 🎻", "plainWord": "Violin", "meaning": "Đàn violin", "phonetic": "/ˌvaɪəˈlɪn/", "correct": "🎻"}, {"type": "letter", "letter": "W", "word": "Whale 🐋", "plainWord": "Whale", "meaning": "Cá voi", "phonetic": "/weɪl/", "correct": "🐋"}, {"type": "letter", "letter": "X", "word": "Xylophone 🎼", "plainWord": "Xylophone", "meaning": "Đàn xylophone", "phonetic": "/ˈzaɪ.lə.fəʊn/", "correct": "🎼"}, {"type": "letter", "letter": "Y", "word": "Yoyo 🪀", "plainWord": "Yoyo", "meaning": "Yoyo", "phonetic": "/ˈjəʊ.jəʊ/", "correct": "🪀"}, {"type": "letter", "letter": "Z", "word": "Zebra 🦓", "plainWord": "Zebra", "meaning": "Ngựa vằn", "phonetic": "/ˈziː.brə/", "correct": "🦓"}, {"type": "number", "letter": "1", "word": "Number 1 🔢", "plainWord": "1", "meaning": "Số 1", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "2", "word": "Number 2 🔢", "plainWord": "2", "meaning": "Số 2", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "3", "word": "Number 3 🔢", "plainWord": "3", "meaning": "Số 3", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "4", "word": "Number 4 🔢", "plainWord": "4", "meaning": "Số 4", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "5", "word": "Number 5 🔢", "plainWord": "5", "meaning": "Số 5", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "6", "word": "Number 6 🔢", "plainWord": "6", "meaning": "Số 6", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "7", "word": "Number 7 🔢", "plainWord": "7", "meaning": "Số 7", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "8", "word": "Number 8 🔢", "plainWord": "8", "meaning": "Số 8", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "9", "word": "Number 9 🔢", "plainWord": "9", "meaning": "Số 9", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "10", "word": "Number 10 🔢", "plainWord": "10", "meaning": "Số 10", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "11", "word": "Number 11 🔢", "plainWord": "11", "meaning": "Số 11", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "12", "word": "Number 12 🔢", "plainWord": "12", "meaning": "Số 12", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "13", "word": "Number 13 🔢", "plainWord": "13", "meaning": "Số 13", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "14", "word": "Number 14 🔢", "plainWord": "14", "meaning": "Số 14", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "15", "word": "Number 15 🔢", "plainWord": "15", "meaning": "Số 15", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "16", "word": "Number 16 🔢", "plainWord": "16", "meaning": "Số 16", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "17", "word": "Number 17 🔢", "plainWord": "17", "meaning": "Số 17", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "18", "word": "Number 18 🔢", "plainWord": "18", "meaning": "Số 18", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "19", "word": "Number 19 🔢", "plainWord": "19", "meaning": "Số 19", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "20", "word": "Number 20 🔢", "plainWord": "20", "meaning": "Số 20", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "21", "word": "Number 21 🔢", "plainWord": "21", "meaning": "Số 21", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "22", "word": "Number 22 🔢", "plainWord": "22", "meaning": "Số 22", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "23", "word": "Number 23 🔢", "plainWord": "23", "meaning": "Số 23", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "24", "word": "Number 24 🔢", "plainWord": "24", "meaning": "Số 24", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "25", "word": "Number 25 🔢", "plainWord": "25", "meaning": "Số 25", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "26", "word": "Number 26 🔢", "plainWord": "26", "meaning": "Số 26", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "27", "word": "Number 27 🔢", "plainWord": "27", "meaning": "Số 27", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "28", "word": "Number 28 🔢", "plainWord": "28", "meaning": "Số 28", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "29", "word": "Number 29 🔢", "plainWord": "29", "meaning": "Số 29", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "30", "word": "Number 30 🔢", "plainWord": "30", "meaning": "Số 30", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "31", "word": "Number 31 🔢", "plainWord": "31", "meaning": "Số 31", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "32", "word": "Number 32 🔢", "plainWord": "32", "meaning": "Số 32", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "33", "word": "Number 33 🔢", "plainWord": "33", "meaning": "Số 33", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "34", "word": "Number 34 🔢", "plainWord": "34", "meaning": "Số 34", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "35", "word": "Number 35 🔢", "plainWord": "35", "meaning": "Số 35", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "36", "word": "Number 36 🔢", "plainWord": "36", "meaning": "Số 36", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "37", "word": "Number 37 🔢", "plainWord": "37", "meaning": "Số 37", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "38", "word": "Number 38 🔢", "plainWord": "38", "meaning": "Số 38", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "39", "word": "Number 39 🔢", "plainWord": "39", "meaning": "Số 39", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "40", "word": "Number 40 🔢", "plainWord": "40", "meaning": "Số 40", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "41", "word": "Number 41 🔢", "plainWord": "41", "meaning": "Số 41", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "42", "word": "Number 42 🔢", "plainWord": "42", "meaning": "Số 42", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "43", "word": "Number 43 🔢", "plainWord": "43", "meaning": "Số 43", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "44", "word": "Number 44 🔢", "plainWord": "44", "meaning": "Số 44", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "45", "word": "Number 45 🔢", "plainWord": "45", "meaning": "Số 45", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "46", "word": "Number 46 🔢", "plainWord": "46", "meaning": "Số 46", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "47", "word": "Number 47 🔢", "plainWord": "47", "meaning": "Số 47", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "48", "word": "Number 48 🔢", "plainWord": "48", "meaning": "Số 48", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "49", "word": "Number 49 🔢", "plainWord": "49", "meaning": "Số 49", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "50", "word": "Number 50 🔢", "plainWord": "50", "meaning": "Số 50", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "51", "word": "Number 51 🔢", "plainWord": "51", "meaning": "Số 51", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "52", "word": "Number 52 🔢", "plainWord": "52", "meaning": "Số 52", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "53", "word": "Number 53 🔢", "plainWord": "53", "meaning": "Số 53", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "54", "word": "Number 54 🔢", "plainWord": "54", "meaning": "Số 54", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "55", "word": "Number 55 🔢", "plainWord": "55", "meaning": "Số 55", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "56", "word": "Number 56 🔢", "plainWord": "56", "meaning": "Số 56", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "57", "word": "Number 57 🔢", "plainWord": "57", "meaning": "Số 57", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "58", "word": "Number 58 🔢", "plainWord": "58", "meaning": "Số 58", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "59", "word": "Number 59 🔢", "plainWord": "59", "meaning": "Số 59", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "60", "word": "Number 60 🔢", "plainWord": "60", "meaning": "Số 60", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "61", "word": "Number 61 🔢", "plainWord": "61", "meaning": "Số 61", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "62", "word": "Number 62 🔢", "plainWord": "62", "meaning": "Số 62", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "63", "word": "Number 63 🔢", "plainWord": "63", "meaning": "Số 63", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "64", "word": "Number 64 🔢", "plainWord": "64", "meaning": "Số 64", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "65", "word": "Number 65 🔢", "plainWord": "65", "meaning": "Số 65", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "66", "word": "Number 66 🔢", "plainWord": "66", "meaning": "Số 66", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "67", "word": "Number 67 🔢", "plainWord": "67", "meaning": "Số 67", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "68", "word": "Number 68 🔢", "plainWord": "68", "meaning": "Số 68", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "69", "word": "Number 69 🔢", "plainWord": "69", "meaning": "Số 69", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "70", "word": "Number 70 🔢", "plainWord": "70", "meaning": "Số 70", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "71", "word": "Number 71 🔢", "plainWord": "71", "meaning": "Số 71", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "72", "word": "Number 72 🔢", "plainWord": "72", "meaning": "Số 72", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "73", "word": "Number 73 🔢", "plainWord": "73", "meaning": "Số 73", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "74", "word": "Number 74 🔢", "plainWord": "74", "meaning": "Số 74", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "75", "word": "Number 75 🔢", "plainWord": "75", "meaning": "Số 75", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "76", "word": "Number 76 🔢", "plainWord": "76", "meaning": "Số 76", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "77", "word": "Number 77 🔢", "plainWord": "77", "meaning": "Số 77", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "78", "word": "Number 78 🔢", "plainWord": "78", "meaning": "Số 78", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "79", "word": "Number 79 🔢", "plainWord": "79", "meaning": "Số 79", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "80", "word": "Number 80 🔢", "plainWord": "80", "meaning": "Số 80", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "81", "word": "Number 81 🔢", "plainWord": "81", "meaning": "Số 81", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "82", "word": "Number 82 🔢", "plainWord": "82", "meaning": "Số 82", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "83", "word": "Number 83 🔢", "plainWord": "83", "meaning": "Số 83", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "84", "word": "Number 84 🔢", "plainWord": "84", "meaning": "Số 84", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "85", "word": "Number 85 🔢", "plainWord": "85", "meaning": "Số 85", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "86", "word": "Number 86 🔢", "plainWord": "86", "meaning": "Số 86", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "87", "word": "Number 87 🔢", "plainWord": "87", "meaning": "Số 87", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "88", "word": "Number 88 🔢", "plainWord": "88", "meaning": "Số 88", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "89", "word": "Number 89 🔢", "plainWord": "89", "meaning": "Số 89", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "90", "word": "Number 90 🔢", "plainWord": "90", "meaning": "Số 90", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "91", "word": "Number 91 🔢", "plainWord": "91", "meaning": "Số 91", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "92", "word": "Number 92 🔢", "plainWord": "92", "meaning": "Số 92", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "93", "word": "Number 93 🔢", "plainWord": "93", "meaning": "Số 93", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "94", "word": "Number 94 🔢", "plainWord": "94", "meaning": "Số 94", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "95", "word": "Number 95 🔢", "plainWord": "95", "meaning": "Số 95", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "96", "word": "Number 96 🔢", "plainWord": "96", "meaning": "Số 96", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "97", "word": "Number 97 🔢", "plainWord": "97", "meaning": "Số 97", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "98", "word": "Number 98 🔢", "plainWord": "98", "meaning": "Số 98", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "99", "word": "Number 99 🔢", "plainWord": "99", "meaning": "Số 99", "phonetic": "", "correct": "🔢"}, {"type": "number", "letter": "100", "word": "Number 100 🔢", "plainWord": "100", "meaning": "Số 100", "phonetic": "", "correct": "🔢"}];
 
-<button id="prevBtn" class="nav-btn">
-⬅ Back
-</button>
+const chibiImages = [
+'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop',
+'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop',
+'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?q=80&w=800&auto=format&fit=crop',
+'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop'
+];
 
-<button id="nextBtn" class="nav-btn">
-Next ➡
-</button>
+let current = 0;
+let score = 0;
 
-</div>
+const lessonCard = document.getElementById('lessonCard');
 
-</section>
+document.getElementById('startBtn').onclick = () => {
+ lessonCard.classList.remove('hidden');
+ renderLesson();
+}
 
-<section id="rewardCard" class="reward-card hidden">
+function renderLesson(){
+ const l = lessons[current];
 
-<div class="reward-icon bounce">
-🎉
-</div>
+ document.getElementById('letter').innerText = l.letter;
+ document.getElementById('word').innerText = l.word;
+ document.getElementById('meaning').innerText = l.meaning;
+ document.getElementById('phonetic').innerText = l.phonetic || '';
+ document.getElementById('lessonImage').src = chibiImages[current % chibiImages.length];
+}
 
-<h2>Excellent!</h2>
+function speak(text, lang){
+ speechSynthesis.cancel();
+ const u = new SpeechSynthesisUtterance(text);
+ u.lang = lang;
+ u.rate = lang === 'vi-VN' ? 0.72 : 0.82;
+ u.pitch = 1;
+ const voices = speechSynthesis.getVoices();
+ const voice = voices.find(v => v.lang.includes(lang.slice(0,2)));
+ if(voice){u.voice = voice;}
+ speechSynthesis.speak(u);
+}
 
-<p>
-Luna Bunny is cheering for you!
-</p>
+document.getElementById('letterBtn').onclick = ()=> {
+ speak(lessons[current].letter, 'en-US');
+}
 
-</section>
+document.getElementById('englishBtn').onclick = ()=> {
+ speak(lessons[current].plainWord, 'en-US');
+}
 
-</div>
+document.getElementById('vietnameseBtn').onclick = ()=> {
+ speak(lessons[current].meaning, 'vi-VN');
+}
 
-<script src="script.js"></script>
+document.getElementById('nextBtn').onclick = ()=> {
+ current = (current + 1) % lessons.length;
+ score += 1;
+ document.getElementById('score').innerText = score;
+ clap();
+ renderLesson();
+}
 
+document.getElementById('prevBtn').onclick = ()=> {
+ current = current === 0 ? lessons.length -1 : current -1;
+ renderLesson();
+}
+
+function clap(){
+ const audio = new Audio('https://actions.google.com/sounds/v1/human_voices/applause.ogg');
+ audio.volume = .6;
+ audio.play();
+}
+</script>
 </body>
 </html>
