@@ -1,1 +1,1 @@
-26 letters + 100 numbers + chibi UI version
+Wonder ABC Universe V7 Full Chibi Edition
