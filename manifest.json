@@ -1,8 +1,17 @@
 {
-  "name": "ABC Adventure V6",
-  "short_name": "ABC V6",
+  "name": "Wonder ABC Universe",
+  "short_name": "Wonder ABC",
+  "description": "Mini app học chữ cái tiếng Anh và số đếm cho trẻ em.",
+  "theme_color": "#705dff",
+  "background_color": "#2c2168",
   "display": "standalone",
-  "background_color": "#fff7de",
-  "theme_color": "#5b7cff",
-  "start_url": "./"
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "icons/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }
